@@ -1,0 +1,647 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+  
+      header {
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+      }
+  
+      main {
+          padding: 20px;
+      }
+  
+      footer {
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+      }
+  
+      .image-container {
+          position: relative;
+      }
+  
+      .image-container:hover .car-name {
+          opacity: 1;
+      }
+  
+      .search-input-container button {
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          margin: 0 5px;
+          cursor: pointer;
+      }
+  
+      .button-link.previous,
+      .button-link.next {
+          display: inline-block;
+          padding: 5px 5px;
+          border-radius: 5px;
+          text-decoration: none;
+          color: white;
+      }
+  
+      .button-link.previous {
+          background-color: #FF5722;
+      }
+  
+      .button-link.next {
+          background-color: #99CCFF;
+      }
+  
+      .digital-clock-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.digital-clock {
+  background-color: #fffacd;
+  width: 110px;
+  height: 60px;
+  border-radius: 20px; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  padding: 0;
+  font-weight: bold;
+  margin-left: 10px;
+  border: 2px solid black;
+  margin-bottom: 5px;
+}
+
+.date,
+.year,
+.time {
+  font-size: 9px;
+  text-align: center;
+}
+
+#search-input {
+  border: 2px solid black;
+  background-color: #f5f5dc;
+  border-radius: 0;
+  width: 400px;
+}
+
+.digital-clock-container .digital-clock {
+  font-family: 'Arial', sans-serif;
+  color: whitesmoke;
+  font-size: 9px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+      @keyframes glow {
+          0% {
+              text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+          }
+  
+          50% {
+              text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+          }
+  
+          100% {
+              text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+          }
+      }
+  
+      .digital-clock-container .digital-clock.glowing {
+          animation: glow 2s infinite;
+      }
+  
+
+      #clear-button,
+      #carSearchForm button[type="submit"] {
+          border: 2px solid #000;
+          padding: 8px 16px;
+          background-color: #CBC3E3;
+          color: #000;
+          cursor: pointer;
+      }
+  
+      .search-heading h2 {
+          border: 2px solid #000;
+          padding: 10px;
+          margin-bottom: 20px;
+          width: 250px; 
+      }
+  
+  
+      nav ul li:nth-child(2) a {
+          color: 	#FFD580;
+      }
+  
+      nav ul li:nth-child(3) a {
+          color: #fffacd;
+      }
+  
+      nav ul li:nth-child(4) a {
+          color: #C4A484;
+      }
+  
+      nav ul li:nth-child(5) a {
+          color: #b0c4de;
+      }
+  
+      nav ul li:nth-child(6) a {
+          color:  #00CED1;
+      }
+  
+      footer nav ul li:nth-child(1) a {
+          color: #CBC3E3;
+      }
+  
+      .featured-car h2 {
+  color: #333;
+  font-size: 24px; 
+}
+
+.car-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.car-box {
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 10px 0;
+  width: 200px;
+  font-size: 12px; 
+}
+  
+.car-box {
+            width: 100%;
+        }
+
+        .car-box h3 {
+            font-size: 14px; 
+        }
+
+        .app-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 40px; 
+  margin-right: 20px; 
+  margin-bottom: 10px;
+}
+
+.app-logo a img {
+  max-width: 200%;
+  height: 100px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.image-container {
+    width: 100%; 
+    max-width: 300px; 
+    margin: 0 auto; 
+}
+
+.image-container img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+        #myBtn {
+    background-color: #ff6666;
+    color: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 40px;
+    width: 150px;
+  }
+
+      
+      @media screen and (max-width: 768px) {
+          main {
+              max-width: 100%;
+              margin: 0 auto;
+          }
+  
+          .app-logo,
+          header,
+          nav ul {
+              text-align: center;
+          }
+  
+          nav ul {
+              padding: 0;
+          }
+  
+          nav ul li {
+              display: block;
+              margin: 5px 0;
+          }
+  
+          .search-bar {
+              text-align: center;
+              margin: 10px auto;
+              max-width: 80%;
+          }
+  
+          .search-input-container button,
+          #clear-button,
+          .digital-clock-container {
+              max-width: 80%;
+              margin: 10px auto;
+          }
+  
+          .search-button,
+          .featured-car {
+              text-align: center;
+              margin: 0 auto;
+          }
+  
+          .homepage {
+              max-width: 100%;
+          }
+          .digital-clock-container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .digital-clock {
+      width: 110px;
+      height: 60px;
+        font-size: 9px; 
+    }
+    
+    .car-box {
+            max-width: 100%; 
+        }
+
+        .image-container {
+    width: 100%; 
+    max-width: 300px; 
+    margin: 0 auto; 
+}
+
+.image-container img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+#myBtn {
+      height: 60px;
+    }
+
+      }
+    
+  </style>
+  
+
+</head>
+<body>
+
+    <div>
+<div id="page-preloader">
+    <div id="preloader"></div>
+</div>
+
+   <div>
+<div id="preloader-container">
+    <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" id="preload-image">
+    </a>
+</div>
+
+<header>
+
+  <div>
+    <div class="app-logo">
+        <a href="Home.html">
+          <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+        </a>
+    </div>
+
+    <div>
+      <div style="text-align: center;">
+        <div id="user-info" style=" margin-left: 10px; text-align: left;">
+            <p id="user-message"></p>
+            <button onclick="logout()" style="display: block; margin: 10px auto; margin-left: 10px; padding: 10px; background-color: #fffacd; border-radius: 10px;">Logout</button>
+          </div>
+    </div>
+    
+    <nav>
+        <ul>
+            
+          <h1 class="text-success">CarChoice Pro</h1>
+          <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+          <br>
+
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+            <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+            <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+            <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+            <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+            <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+          </ul>
+    </nav>
+</header>
+
+<main>
+
+  <section id="search" class="search-section">
+    <div class="search-heading">
+        <h2 class="text-info">Find Your Perfect Car:</h2>
+        <div class="search-bar">
+            <form id="carSearchForm">
+                <div class="search-input-container">
+                    <input type="text" id="search-input" name="query" placeholder="Search For Cars:" required>
+                    <button type="submit" style="background-color: #fffacd; border: 2px solid black;">
+                        <img src="Images/search icon.jpg" alt="Search" style="width: 30px; height: 30px;">
+                    </button>
+                    <button id="clear-button" style="background-color: #ff80ff; border: 2px solid black;">
+                        <img src="Images/clear search icon.jpg" alt="Clear Search" style="width: 30px; height: 30px;">
+                    </button>
+                </div>
+                <div id="search-results"></div>
+            </form>
+
+                    <div>
+                <div class="digital-clock-container">
+                    <div id="digital-clock" class="digital-clock">
+                        <div class="clock">
+                            <div class="date" id="date"></div>
+                            <div class="year" id="year"></div>
+                            <div class="time">
+                                <div id="hour" class="hour"></div>
+                                <div id="minute" class="minute"></div>
+                                <div id="second" class="second"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+    </section>
+    
+   <div>
+    <button id="myBtn">Add To HomeScreen</button>
+</div>
+
+    <br>
+
+    <div>
+    <section class="featured-car">
+      <div class="search-heading">
+        <h2 class="text-danger">Featured Car Of Day:</h2>
+        <div class="car-boxes" id="featuredCarList">
+        </div>
+      </div>
+
+      <div>
+        <div id="log-container"></div>
+      </div>
+
+    </section>
+    
+</main>
+
+<div>
+<a href="Home.html" class="button-link previous">
+    <img src="images/back.png" alt="Previous" class="button-image" />
+</a>
+
+<a href="About Us.html" class="button-link next">
+    <img src="images/next.png" alt="Next" class="button-image" />
+</a>
+</div>
+
+  <footer>
+        <nav>
+            <ul>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const carSearchForm = document.getElementById("carSearchForm");
+  const searchInput = document.getElementById("search-input");
+  const clearButton = document.getElementById("clear-button");
+  const featuredCarList = document.getElementById("featuredCarList");
+  const preloader = document.getElementById("page-preloader");
+  const searchResultsContainer = document.getElementById("search-results");
+  const logContainer = document.getElementById('log-container');
+
+  carSearchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const query = searchInput.value;
+    displaySearchResults(query);
+  });
+
+  clearButton.addEventListener("click", function () {
+    clearSearchResults();
+    clearLogMessages();
+    searchInput.value = "";
+  });
+
+  window.addEventListener("load", function () {
+    preloader.style.opacity = "0";
+    setTimeout(function () {
+      preloader.style.display = "none";
+    }, 300);
+  });
+
+  function displaySearchResults(query) {
+    const resultElement = document.createElement("div");
+    resultElement.textContent = `Search results for: ${query}`;
+    searchResultsContainer.innerHTML = "";
+    searchResultsContainer.appendChild(resultElement);
+  }
+
+  function clearSearchResults() {
+    searchResultsContainer.innerHTML = "";
+  }
+
+  function clearLogMessages() {
+    logContainer.innerHTML = "";
+  }
+
+  featuredCarList.addEventListener("click", (event) => {
+    if (event.target.classList.contains("favorite-button")) {
+      const button = event.target;
+      const carItem = button.closest(".car-box");
+      const carId = carItem.getAttribute("data-carid");
+
+      if (button.textContent === "Added to Favorites") {
+        button.textContent = "Removed from Favorites";
+        carItem.classList.add("favorited");
+        logMessage(`Car with ID ${carId} has been removed from Favorites`);
+      } else {
+        button.textContent = "Added to Favorites";
+        carItem.classList.remove("favorited");
+        logMessage(`Car with ID ${carId} has been added to Favorites`);
+      }
+    }
+  });
+
+  function logMessage(message) {
+    const logEntry = document.createElement('p');
+    logEntry.textContent = message;
+    logContainer.appendChild(logEntry);
+  }
+
+        
+        function updateDigitalClock() {
+          const clockElement = document.getElementById("digital-clock");
+          const dateElement = document.getElementById("date");
+          const yearElement = document.getElementById("year");
+          const hour = document.getElementById("hour");
+          const minute = document.getElementById("minute");
+          const second = document.getElementById("second");
+    
+          const now = new Date();
+    
+          const day = now.toLocaleString("en-uk", { weekday: "long" });
+          const month = now.toLocaleString("en-uk", { month: "long" });
+          const date = now.getDate();
+          const year = now.getFullYear();
+          const timeOptions = { hour: "numeric", minute: "numeric", second: "numeric" };
+          const time = now.toLocaleTimeString(undefined, timeOptions);
+    
+          dateElement.textContent = `${day} ${date} ${month}`;
+          yearElement.textContent = year;
+          hour.textContent = time;
+    
+          const randomColor = getRandomColor();
+          const textShadowColor = `0 0 10px ${randomColor}`;
+          const circleBackgroundColor = randomColor;
+    
+          clockElement.style.textShadow = textShadowColor;
+          clockElement.style.backgroundColor = circleBackgroundColor;
+        }
+    
+        updateDigitalClock();
+        setInterval(updateDigitalClock, 1000);
+    
+        function getRandomColor() {
+          const letters = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        }
+    
+      });
+
+      $.getJSON('Data/featuredCar.json', function(data) {
+    $.each(data.featuredCars, function(index, car) {
+        var carBox = $('<div>').addClass('car-box').attr('data-carid', car.carId);
+        carBox.append($('<h3>').addClass('text-' + car.favoriteColor).text(car.day));
+
+        var imageLink = $('<a>').attr({
+            'href': car.image.link,
+            'target': '_blank'
+        }).append(
+            $('<img>').attr({src: car.image.url, alt: car.name})
+        );
+
+        carBox.append($('<div>').addClass('image-container').append(imageLink)
+            .append($('<p>').addClass('car-name').text(car.name))
+        );
+
+        carBox.append($('<p>').text('Price: ' + car.priceRange));
+
+        carBox.append(
+            $('<button>')
+                .addClass('favorite-button')
+                .css({
+                    'background-color': car.favoriteColor,
+                    'height': '60px', 
+                    'width': '60px', 
+                    'font-size': '10px',
+                    'border-radius': '10px',  
+                })
+                .text('Add to Favorites')
+        );
+
+        $('#featuredCarList').append(carBox);
+    });
+});
+
+ var userEmail = sessionStorage.getItem("userEmail");
+
+if (userEmail) {
+  document.getElementById("user-message").innerText = "Logged In As: " + userEmail;
+} else {
+  window.location.href = "loginpage.html";
+}
+
+function logout() {
+  sessionStorage.removeItem("userEmail");
+  window.location.href = "loginpage.html";
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('js/service-worker.js')
+    .then(function () {
+    })
+    .catch(function (error) {
+      console.error('', error);
+    });
+}
+
+const addIconBtn = document.querySelector('#myBtn');
+let promptForAddIcon;
+
+function triggerThePrompt() {
+  promptForAddIcon.prompt();
+}
+
+function setUpAddIcon(event) {
+  event.preventDefault();
+  promptForAddIcon = event;
+  addIconBtn.addEventListener('click', triggerThePrompt, false);
+}
+
+window.addEventListener('beforeinstallprompt', setUpAddIcon, false);
+
+
+    </script>
+    
+</body>
+</html>

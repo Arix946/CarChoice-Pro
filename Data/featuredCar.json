@@ -1,0 +1,89 @@
+{
+  "featuredCars": [
+      {
+        "day": "Monday: Family",
+        "carId": "Kia Telluride LX",
+        "image": {
+          "url": "Images/Kia Telluride LX.jpg",
+          "link": "https://www.kia.com/us/en/telluride"
+        },
+        "name": "Kia Telluride LX",
+      "priceRange": "£28,000 - £38,000",
+      "favoriteColor": "#fffacd",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Tuesday: Sports",
+      "carId": "Chevrolet Corvette Stingray",
+      "image": {
+        "url":"Images/Chevrolet Corvette Stingray.jpg",
+        "link": "https://www.chevrolet.com/performance/corvette" 
+      },
+      "name": "Chevrolet Corvette Stingray",
+      "priceRange": "£45,000 - £64,000",
+      "favoriteColor": "#D3D3D3",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Wednesday: Luxury",
+      "carId": "Mercedes-Benz S 560",
+      "image": {
+        "url": "Images/Mercedes-Benz S 560.jpeg",
+        "link": "https://www.mercedes-benz.com/en/vehicles/mercedes-benz/s-class/"
+      },
+      "name": "Mercedes Benz S 560",
+      "priceRange": "£70,000 - £150,000",
+      "favoriteColor": "#99CCFF",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Thursday: Environment",
+      "carId": "Tesla Model 3 Standard Range Plus",
+      "image": {
+        "url": "Images/Tesla Model 3 Standard Range Plus.jpg",
+        "link": "https://www.tesla.com/en_gb/model3"
+      },
+      "name": "Tesla Model 3 Standard Range Plus",
+      "priceRange": "£35,000 - £50,000",
+      "favoriteColor": "#99FF99",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Friday: Classic",
+      "carId": "Ford Mustang EcoBoost",
+      "image": {
+        "url":  "Images/Ford Mustang EcoBoost.jpg",
+        "link": "https://www.ford.com/cars/mustang/models/ecoboost-fastback/"
+      },
+      "name": "Ford Mustang EcoBoost",
+      "priceRange": "£22,000 - £59,000",
+      "favoriteColor": "#FFFF00",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Saturday: Adventure",
+      "carId": "Subaru Outback Base",
+      "image": {
+        "url":"Images/Subaru Outback Base.jpg",
+        "link": "https://www.subaru.com/vehicles/outback/specs-trim.html"
+      },
+      "name": "Subaru Outback Base",
+      "priceRange": "£22,000 - £32,000",
+      "favoriteColor": "#FFA500",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    },
+    {
+      "day": "Sunday: Sedan",
+      "carId": "BMW 3 Series 330i",
+      "image": {
+        "url": "Images/BMW 3 Series 330i.jpg",
+        "link": "https://www.bmw.co.uk/en/all-models/3-series.html"
+      },
+      "name": "BMW 3 Series 330i",
+      "priceRange": "£28,000 - £50,000",
+      "favoriteColor": "#FFC0CB",
+      "buttons": ["Add to Favorites", "Remove from Favorites"]
+    }
+  ]
+}
+

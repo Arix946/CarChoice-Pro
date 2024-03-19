@@ -1,0 +1,26 @@
+{
+  "contactInformation": {
+    "title": "Contact:",
+    "details": [
+      {
+        "label": "Email:",
+        "value": "info@carguidepro.co.uk"
+      },
+      {
+        "label": "Telephone:",
+        "value": "01274 687854 Mobile: 07360 132748"
+      },
+      {
+        "label": "Address:",
+        "value": "CarGuidePro Ltd. 123 Main Street London, UK SW1A 1AA"
+      },
+      {
+        "label": "Opening Hours:",
+        "value": [
+          "Monday to Friday: 8am - 8pm",
+          "Saturday to Sunday: 9am - 5pm"
+        ]
+      }
+    ]
+  }
+}

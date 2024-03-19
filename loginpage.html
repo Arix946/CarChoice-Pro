@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>CarChoice Pro Login</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('Images/carbackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+        
+        .centered-box {
+            text-align: center;
+        }
+
+        .centered-box h1 {
+    border: 4px solid #D3D3D3; 
+    background: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+        #login-container {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #000;
+            background-color: #D3D3D3;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 40%;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: 	#00008B;
+        }
+            
+        @media only screen and (max-width: 730px) {
+    body {
+        background-size: 100%; 
+    }
+
+    #login-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <main>
+
+        <div>
+            <div class="centered-box">
+                <h1>CarChoice Pro</h1>
+            </div>
+
+            <div>
+                <div id="login-container">
+                    <div style="text-align: center;">
+                        <label for="email">Email:</label>  
+                        <input type="text" id="email" placeholder="Input Email:" style="border: 2px solid #000; text-align: center;">
+                        
+                        <label for="password">Password:</label>
+                        <div style="position: relative;">
+                            <input type="password" id="password" placeholder="Input Password:" style="border: 2px solid #000; text-align: center;">
+                            <i class="toggle-password" onclick="togglePasswordVisibility()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">&#128065;</i>
+                        </div>
+                        
+                        <button onclick="login()">Login</button>
+                        <button onclick="redirectToSignUpPage()">SignUp</button>
+                    </div>
+                </div>
+            </div>
+                    <br>
+
+                    <div>
+                        <div id="error-message" style="color: #000000;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/signuppage.js"></script>
+    <script>
+        function login() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if (email === "" || password === "") {
+                errorMessage.textContent = "Please Fill In All Fields.";
+
+                setTimeout(function() {
+                    errorMessage.textContent = "";
+                }, 10000);
+            } else {
+                errorMessage.textContent = "";
+
+                var loginContainer = document.getElementById("login-container");
+                setTimeout(function () {
+                    sessionStorage.setItem("userEmail", email);
+                    window.location.href = "Home.html";
+                }, 500);
+            }
+        }
+
+        function redirectToSignUpPage() {
+        window.location.href = "signuppage.html";
+    }
+
+    function signup() {
+    }
+
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var eyeIcon = document.querySelector(".toggle-password");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.innerHTML = "&#128064;"; 
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.innerHTML = "&#128065;"; 
+        }
+    }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1006 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+#addToFavourites,
+.customButton1,
+.previous,
+#removeFromFavourites,
+.customButton2,
+.next {
+    font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+#addToFavourites,
+.customButton1,
+.previous {
+    background-color: hsl(300, 50%, 70%);
+    color: black;
+}
+
+#removeFromFavourites,
+.customButton2,
+.next {
+    background-color: #ff7f50;
+    color: black;
+}
+
+.favorite-buttons button {
+    width: 150px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+select#suggestedCar {
+    margin-right: 10px;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters-section {
+    margin-right: 10px;
+}
+
+.favorite-buttons {
+    margin-top: 10px;
+}
+
+.img-box,
+.image-container,
+.zoom-buttons-container {
+    margin: 10px;
+    flex: 1;
+}
+
+img,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+canvas {
+    border: 1px solid black;
+    width: 30px;
+}
+
+.enhanced-image {
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: center;
+}
+
+.image-container:hover .enhanced-image {
+    transform: scale(1.1);
+}
+
+.contact-box {
+    border: 1px solid grey;
+    padding: 10px;
+    background-color: lightgrey;
+    max-width: 100%;
+}
+
+.contact-box p {
+    color: black;
+    transition: color 0.3s;
+}
+
+.contact-box p:hover {
+    color: blue;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+    padding-bottom: 50px; 
+}
+
+.image-caption {
+    background-color: #ADD8E6;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    box-sizing: border-box;
+    border: 2px solid #000;
+}
+
+.make-selection,
+#suggestedCar {
+    width: 335px;
+}
+
+h2 {
+    border: 2px solid #000;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 260px;
+}
+
+nav ul li:nth-child(2) a {
+    color: #FFD580;
+}
+
+nav ul li:nth-child(3) a {
+    color: #fffacd;
+}
+
+nav ul li:nth-child(4) a {
+    color: #C4A484;
+}
+
+nav ul li:nth-child(5) a {
+    color: #b0c4de;
+}
+
+nav ul li:nth-child(6) a {
+    color: #00CED1;
+}
+
+footer nav ul li:nth-child(1) a {
+    color: #CBC3E3;
+}
+
+.zoom-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .zoom-buttons button {
+        font-size: 12px; 
+        padding: 12px 12px;
+        cursor: pointer;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 4px;
+        margin: 5px;
+        outline: none;
+        color: black; 
+    }
+
+    .button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#myList {
+  border: 2px solid black;
+  padding: 8px;
+  margin: 4px 0;
+  width: 250px;
+  border-radius: 10px;
+  background-color: #FBFBE4
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.app-logo a img {
+    max-width: 200%;
+    height: 100px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.menu-link {
+    font-size: 20px;
+}
+
+p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+@media screen and (max-width: 768px) {
+    main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .app-logo,
+    header,
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul {
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .search-bar {
+        text-align: center;
+        margin: 10px auto;
+        max-width: 80%;
+    }
+
+    .search-input-container button,
+    #clear-button,
+    .digital-clock-container {
+        max-width: 80%;
+        margin: 10px auto;
+    }
+
+    .search-button,
+    .featured-car {
+        text-align: center;
+    }
+
+    .homepage {
+        max-width: 100%;
+    }
+
+    #make {
+        max-width: 100%;
+        margin: 10px auto;
+        color: black;
+        font-size: 12px;
+    }
+
+    #suggestedCar {
+        max-width: 100%;
+        margin: 10px auto;
+        color: black;
+        font-size: 14px;
+    }
+    .zoom-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .zoom-buttons button {
+        font-size: 12px; 
+        padding: 12px 12px;
+        cursor: pointer;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 4px;
+        margin: 5px;
+        outline: none;
+        color: black; 
+    }
+
+    .image-container {
+    position: relative;
+    text-align: center;
+    padding-bottom: 50px; 
+}
+
+.image-caption {
+    background-color: #ADD8E6;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    
+    
+}
+
+}
+
+    </style>
+  </head>
+  <body>
+  
+      <div>
+  <div id="page-preloader">
+      <div id="preloader"></div>
+  </div>
+  
+     <div>
+  <div id="preloader-container">
+      <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+      </a>
+  </div>
+  
+  <header>
+  
+    <div>
+      <div class="app-logo">
+          <a href="Home.html">
+            <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+          </a>
+      </div>
+  
+       
+        <nav>
+            <ul>
+              <h1 class="text-warning">CarChoice Pro</h1>
+              <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+              <br>
+              
+              <li><a href="Home.html">Home</a></li>
+              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+              <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+              <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+              <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+              <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+              <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      <div class="contact-box" style="border: 1px solid grey; padding: 10px; background-color: #EFE7DB; max-width: 100%; border-radius: 10px;">
+        <p>
+            Please feel free to reach out to us without any hesitation. We are eager to assist you in finding the precise car you're seeking. You can also visit our "Contact Us" page whenever you need to contact us.
+        </p>
+    </div>
+    
+
+        <br>
+        
+        <div class="content-container">
+          <div id="Suggested-cars">
+            
+            <div>
+            <h2 class="text-info">Suggested Cars:</h2> 
+            </div>   
+            
+            <div>
+            <ul id="myList">
+              
+              <li data-url="Data/Cars.data.json?id=1">Toyota Camry</li>
+              <li data-url="Data/Cars.data.json?id=2">Honda Civic</li>
+              <li data-url="Data/Cars.data.json?id=3">Ford Mustang</li>
+              <li data-url="Data/Cars.data.json?id=4">BMW 3 Series</li>
+              <li data-url="Data/Cars.data.json?id=5">Volkswagen Golf</li>
+              <li data-url="Data/Cars.data.json?id=6">Chevrolet Silverado</li>
+              <li data-url="Data/Cars.data.json?id=7">Subaru Outback</li>
+              <li data-url="Data/Cars.data.json?id=8">Mercedes-Benz E-Class</li>
+              <li data-url="Data/Cars.data.json?id=9">Hyundai Sonata</li>
+              <li data-url="Data/Cars.data.json?id=10">Nissan Altima</li>
+              <li data-url="Data/Cars.data.json?id=11">Tesla Model 3</li>
+              <li data-url="Data/Cars.data.json?id=12">Lexus RX</li>
+              <li data-url="Data/Cars.data.json?id=13">Audi A4</li>
+              <li data-url="Data/Cars.data.json?id=14">Jeep Wrangler</li>
+              <li data-url="Data/Cars.data.json?id=15">Porsche 911</li>
+              <li data-url="Data/Cars.data.json?id=16">Kia Sportage</li>
+              <li data-url="Data/Cars.data.json?id=17">Volvo XC60</li>
+              <li data-url="Data/Cars.data.json?id=18">Dodge Charger</li>
+              <li data-url="Data/Cars.data.json?id=19">Subaru WRX</li>
+              <li data-url="Data/Cars.data.json?id=20">GMC Sierra</li>
+              <li data-url="Data/Cars.data.json?id=21">Volkswagen Polo</li>
+              <li data-url="Data/Cars.data.json?id=22">Ferrari</li>
+              <li data-url="Data/Cars.data.json?id=23">Lamborghini</li>
+              <li data-url="Data/Cars.data.json?id=24">Volkswagen Golf Mk 8</li>
+            </ul>
+            </div>
+            
+<div id="dataDisplay"></div>
+
+<button id="goBackButton" class="fixed-position" style="display:none;">Go Back</button>
+
+<br>
+
+
+<br>
+          </div>
+      
+          <br>
+        
+          <div>
+<div id="carDetailsContainer" style="display: none;">
+  <h2>Car Details</h2>
+  <p id="carMake"></p>
+  <p id="carModel"></p>
+  <p id="carCity"></p>
+  <p id="carTransmission"></p>
+  <p id="carFuelType"></p>
+  <button onclick="goBack()">Go Back</button>
+</div>
+          
+<div>
+<div class="filters-section">
+  <div class="make-selection">
+    <select id="make">
+      <option value="Choose An Make To Add To Your Favourites">Choose An Make To Add To Your Favourites</option>
+      <option value="Toyota">Toyota</option>
+      <option value="Honda">Honda</option>
+      <option value="Nissan">Nissan</option>
+      <option value="Ford">Ford</option>
+      <option value="Hyundai">Hyundai</option>
+      <option value="Kia">Kia</option>
+      <option value="Chevrolet">Chevrolet</option>
+      <option value="Mazda">Mazda</option>
+      <option value="Volkswagen">Volkswagen</option>
+      <option value="Subaru">Subaru</option>
+      <option value="Jeep">Jeep</option>
+      <option value="Mitsubishi">Mitsubishi</option>
+      <option value="Audi">Audi</option>
+      <option value="BMW">BMW</option>
+      <option value="Mercedes-Benz">Mercedes-Benz</option>
+    </select>
+  </div>
+
+  <div>
+  <div class="favorite-buttons" style="margin-top: 10px;">
+    <button id="addToFavoritesMake" class="customButton1">Add To Favorites</button>
+    <button id="removeFromFavoritesMake" class="customButton2">Remove From Favorites</button>
+  </div>
+</div>
+
+<br>
+
+<div>
+          <div class="filters-section">
+            <select id="suggestedCar">
+                <option value="Choose An Model To Add To Your Favourites">Choose An Model To Add To Your Favourites</option>
+                <option value="Corolla">Corolla</option>
+                <option value="Civic">Civic</option>
+                <option value="Toyota Camry">Toyota Camry</option>
+    <option value="Toyota Yaris">Toyota Yaris</option>
+    <option value="Toyota Prius">Toyota Prius (for those interested in hybrid cars)</option>
+    <option value="Honda Civic">Honda Civic</option>
+    <option value="Honda Accord">Honda Accord</option>
+    <option value="Honda Fit">Honda Fit</option>
+    <option value="Honda HR-V">Honda HR-V (compact SUV)</option>
+    <option value="Nissan Sentra">Nissan Sentra</option>
+    <option value="Nissan Altima">Nissan Altima</option>
+    <option value="Nissan Versa">Nissan Versa</option>
+    <option value="Nissan Kicks">Nissan Kicks (compact SUV)</option>
+    <option value="Ford Focus">Ford Focus</option>
+    <option value="Ford Fusion">Ford Fusion</option>
+    <option value="Ford Fiesta">Ford Fiesta</option>
+    <option value="Ford EcoSport">Ford EcoSport (compact SUV)</option>
+    <option value="Hyundai Elantra">Hyundai Elantra</option>
+    <option value="Hyundai Sonata">Hyundai Sonata</option>
+    <option value="Hyundai Accent">Hyundai Accent</option>
+    <option value="Hyundai Kona">Hyundai Kona (compact SUV)</option>
+    <option value="Kia Forte">Kia Forte</option>
+    <option value="Kia Optima">Kia Optima</option>
+    <option value="Kia Rio">Kia Rio</option>
+    <option value="Kia Soul">Kia Soul (compact car with SUV-like styling)</option>
+    <option value="Chevrolet Cruze">Chevrolet Cruze</option>
+    <option value="Chevrolet Malibu">Chevrolet Malibu</option>
+    <option value="Chevrolet Spark">Chevrolet Spark</option>
+    <option value="Chevrolet Trax">Chevrolet Trax (compact SUV)</option>
+    <option value="Mazda3">Mazda3</option>
+    <option value="Mazda6">Mazda6</option>
+    <option value="Mazda CX-3">Mazda CX-3 (compact SUV)</option>
+    <option value="Mazda CX-30">Mazda CX-30 (subcompact SUV)</option>
+    <option value="Volkswagen Jetta">Volkswagen Jetta</option>
+    <option value="Volkswagen Passat">Volkswagen Passat</option>
+    <option value="Volkswagen Golf">Volkswagen Golf</option>
+    <option value="Volkswagen Tiguan">Volkswagen Tiguan (compact SUV)</option>
+    <option value="Subaru Impreza">Subaru Impreza</option>
+    <option value="Subaru Legacy">Subaru Legacy</option>
+    <option value="Subaru Crosstrek">Subaru Crosstrek (compact SUV)</option>
+    <option value="Subaru Forester">Subaru Forester (compact SUV)</option>
+    <option value="Jeep Renegade">Jeep Renegade (compact SUV)</option>
+    <option value="Jeep Compass">Jeep Compass (compact SUV)</option>
+    <option value="Honda Fit">Honda Fit</option>
+    <option value="Honda HR-V">Honda HR-V (compact SUV)</option>
+    <option value="Honda CR-V">Honda CR-V (compact SUV)</option>
+    <option value="Nissan Versa Note">Nissan Versa Note (hatchback)</option>
+    <option value="Nissan Rogue Sport">Nissan Rogue Sport (compact SUV)</option>
+    <option value="Nissan Juke">Nissan Juke (compact SUV)</option>
+    <option value="Toyota C-HR">Toyota C-HR (compact SUV)</option>
+    <option value="Toyota RAV4">Toyota RAV4 (compact SUV)</option>
+    <option value="Toyota Corolla Hatchback">Toyota Corolla Hatchback</option>
+    <option value="Ford Escape">Ford Escape (compact SUV)</option>
+    <option value="Ford EcoSport">Ford EcoSport (compact SUV)</option>
+    <option value="Hyundai Venue">Hyundai Venue (subcompact SUV)</option>
+    <option value="Hyundai Kona">Hyundai Kona (compact SUV)</option>
+    <option value="Kia Seltos">Kia Seltos (subcompact SUV)</option>
+    <option value="Kia Sportage">Kia Sportage (compact SUV)</option>
+    <option value="Mitsubishi Mirage">Mitsubishi Mirage</option>
+    <option value="Mitsubishi Outlander Sport">Mitsubishi Outlander Sport (compact SUV)</option>
+    <option value="Chevrolet Trailblazer">Chevrolet Trailblazer (subcompact SUV)</option>
+    <option value="Chevrolet Equinox">Chevrolet Equinox (compact SUV)</option>
+    <option value="Mazda CX-5">Mazda CX-5 (compact SUV)</option>
+    <option value="Mazda CX-9">Mazda CX-9 (midsize SUV)</option>
+    <option value="Audi A3">Audi A3</option>
+    <option value="Audi A4">Audi A4</option>
+    <option value="Audi A6">Audi A6</option>
+    <option value="Audi A8">Audi A8</option>
+    <option value="Audi Q3">Audi Q3</option>
+    <option value="Audi Q5">Audi Q5</option>
+    <option value="Audi Q7">Audi Q7</option>
+    <option value="Audi Q8">Audi Q8</option>
+    <option value="Audi e-tron (Electric)">Audi e-tron (Electric)</option>
+    <option value="Audi S3 (Performance)">Audi S3 (Performance)</option>
+
+
+    <option value="BMW 3 Series">BMW 3 Series</option>
+    <option value="BMW 5 Series">BMW 5 Series</option>
+    <option value="BMW 7 Series">BMW 7 Series</option>
+    <option value="BMW X1">BMW X1</option>
+    <option value="BMW X3">BMW X3</option>
+    <option value="BMW X5">BMW X5</option>
+    <option value="BMW X7">BMW X7</option>
+    <option value="BMW i3 (Electric)">BMW i3 (Electric)</option>
+    <option value="BMW i8 (Plug-in Hybrid)">BMW i8 (Plug-in Hybrid)</option>
+    <option value="BMW M3 (Performance)">BMW M3 (Performance)</option>
+    <option value="Mercedes-Benz C-Class">Mercedes-Benz C-Class</option>
+    <option value="Mercedes-Benz E-Class">Mercedes-Benz E-Class</option>
+    <option value="Mercedes-Benz S-Class">Mercedes-Benz S-Class</option>
+    <option value="Mercedes-Benz GLA">Mercedes-Benz GLA</option>
+    <option value="Mercedes-Benz GLC">Mercedes-Benz GLC</option>
+    <option value="Mercedes-Benz GLE">Mercedes-Benz GLE</option>
+    <option value="Mercedes-Benz GLS">Mercedes-Benz GLS</option>
+    <option value="Mercedes-Benz A-Class">Mercedes-Benz A-Class</option>
+    <option value="Mercedes-Benz B-Class">Mercedes-Benz B-Class</option>
+    <option value="Mercedes-Benz EQC (Electric)">Mercedes-Benz EQC (Electric)</option>
+            </select>
+            </div>
+
+</div>
+            <div>
+            <div class="favorite-buttons" style="margin-top: 10px;"></div>
+              <button id="addToFavorites" class="customButton1">Add To Favorites</button>
+              <button id="removeFromFavorites" class="customButton2">Remove From Favorites</button>
+          </div>
+
+          <div>
+            <div id="messageContainer"></div>
+          </div>
+<br>
+
+<div>
+<div class="image-container">
+  <div class="image-wrapper" style="position: relative;">
+    <a href="https://www.carwale.com/mercedes-benz-cars/e-class-2017-2021/360-view/open/" target="_blank">
+      <img class="enhanced-image" id="zoomImage" src="Images/mercedes 2017.jpg" alt="Mercedes-Benz E-Class 2017" style="border: 4px solid #000;">
+    </a>
+    </div>
+    
+    <div class="image-container">
+      <div class="image-caption">Mercedes-Benz E-Class 2017</div>
+    </div>
+    
+    <div>
+      <nav class="zoom-buttons-container">
+        <div class="zoom-buttons">
+          <div id="dataDisplayContainer" class="fixed-position"></div>
+          <button id="normalButton" style="background-color: #3498db; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Normal View">Normal View</button>
+          <button id="backButton" style="background-color: #2ecc71; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Back View">Back View</button>
+          <button id="leftViewButton" style="background-color: #e74c3c; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Left View">Left View</button>
+          <button id="rightViewButton" style="background-color: #807B9C; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Right View">Right View</button>
+          <button id="zoomInButton" style="background-color: #B87333; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Zoom In">Zoom In</button>
+          <button id="zoomOutButton" style="background-color: #6c7a89; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Zoom Out">Zoom Out</button>
+          <button id="fullScreenButton" style="background-color: #fffacd; color: #000; border: 1px solid #000; border-radius: 10px;" aria-label="Toggle Full Screen">Full Screen</button>
+        </div>
+      </nav>
+    </div>
+    
+    <br>
+
+    <div>
+    <div class="button-container">
+      <a href="Car Search Screen.html" class="button-link previous">
+          <img src="images/back.png" alt="Previous" class="button-image" />
+      </a>
+      
+      <a href="Location Based Screen.html" class="button-link next">
+          <img src="images/next.png" alt="Next" class="button-image" />
+      </a>
+  </div>
+
+</main>
+
+<footer>
+  <nav>
+      <ul>
+          <li><a href="Contact Us.html">Contact Us</a></li>
+      </ul>
+  </nav>
+</footer>
+
+</body>
+</html>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const selectCar = document.getElementById('suggestedCar');
+  const addToFavoritesButton = document.getElementById('addToFavorites');
+  const removeFromFavoritesButton = document.getElementById('removeFromFavorites');
+  const favoritesList = document.getElementById('favorites-list');
+  const messageContainer = document.getElementById('messageContainer');
+
+  let selectedCar;
+  let selectedMake;
+
+  selectCar.addEventListener('change', () => {
+    selectedCar = selectCar.value;
+  });
+
+  addToFavoritesButton.addEventListener('click', () => handleFavoritesClick('add', 'Model'));
+  removeFromFavoritesButton.addEventListener('click', () => {
+    handleFavoritesClick('remove', 'Model');
+    resetFilterMessage('Model');
+  });
+
+  const selectMake = document.getElementById('make');
+  const addToFavoritesButtonMake = document.getElementById('addToFavoritesMake');
+  const removeFromFavoritesButtonMake = document.getElementById('removeFromFavoritesMake');
+
+  selectMake.addEventListener('change', () => {
+    selectedMake = selectMake.value;
+  });
+
+  addToFavoritesButtonMake.addEventListener('click', () => {
+    handleFavoritesClick('add', 'Make');
+  });
+  removeFromFavoritesButtonMake.addEventListener('click', () => {
+    handleFavoritesClick('remove', 'Make');
+    resetFilterMessage('Make');
+  });
+
+  function handleFavoritesClick(action, category) {
+    if (!selectedMake && !selectedCar) {
+      setMessage('Please select a make or model before adding to or removing from favorites.');
+      return;
+    }
+
+    if (action === 'add') {
+      setMessage(`Added ${category === 'Make' ? selectedMake : selectedCar} to Favorites`);
+    } else if (action === 'remove') {
+      const removedItem = category === 'Make' ? selectedMake : selectedCar || '';
+      setMessage(`Removed "${removedItem}" from Favorites`);
+
+      if (category === 'Model') {
+        selectCar.value = 'Choose An Model To Add To Your Favourites';
+      } else if (category === 'Make') {
+        selectMake.value = 'Choose An Make To Add To Your Favourites';
+      }
+    }
+  }
+
+  function resetFilterMessage(category) {
+    if (category === 'Make') {
+      selectMake.value = 'Choose An Make To Add To Your Favourites';
+    } else if (category === 'Model') {
+      selectCar.value = 'Choose An Model To Add To Your Favourites';
+    }
+  }
+
+  function setMessage(message) {
+    messageContainer.textContent = message;
+  }
+});
+
+    let currentZoom = 1;
+
+    function zoomIn() {
+      updateZoom(0.1);
+    }
+
+    function zoomOut() {
+      updateZoom(-0.1);
+    }
+
+    function updateZoom(change) {
+      currentZoom += change;
+      const zoomImage = document.getElementById('zoomImage');
+      if (zoomImage) {
+        zoomImage.style.transform = `scale(${currentZoom})`;
+      } else {
+        console.error("Image element with ID 'zoomImage' not found!");
+      }
+    }
+
+    function showSideView(view) {
+      const currentScrollPos = window.scrollY;
+      const container = document.querySelector('.image-container');
+
+      const viewMap = {
+        left: 'left side view.jpg',
+        right: 'right side view.jpg',
+        back: 'mercedes 2017 back view.jpg',
+        default: 'mercedes 2017.jpg',
+      };
+
+      const sideViewImagePath = `Images/${viewMap[view] || viewMap['default']}`;
+
+      const zoomImage = document.getElementById('zoomImage');
+
+      if (zoomImage) {
+        zoomImage.src = sideViewImagePath;
+
+        if (container.getBoundingClientRect().bottom < 0) {
+          window.scrollTo(0, currentScrollPos - container.getBoundingClientRect().bottom);
+        }
+      } else {
+        console.error("Image element with ID 'zoomImage' not found!");
+      }
+    }
+
+    function toggleFullScreen() {
+      const elem = document.getElementById('zoomImage');
+
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch((err) => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+      } else {
+      }
+    }
+    var myList = document.getElementById('myList');
+var dataDisplay = document.getElementById('dataDisplay');
+var goBackButton = document.getElementById('goBackButton');
+
+myList.addEventListener('click', function (event) {
+  if (event.target.tagName === 'LI') {
+    var dataUrl = event.target.getAttribute('data-url');
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var jsonData = JSON.parse(xhr.responseText);
+
+          var carId = parseInt(dataUrl.match(/id=(\d+)/)[1], 10);
+
+          var carData = jsonData.find(function (car) {
+            return car.id === carId;
+          });
+
+          if (carData) {
+            var container = document.createElement('div');
+            container.className = 'data-container';
+
+            var carDataContainer = document.createElement('div');
+            carDataContainer.className = 'car-data-container';
+
+            carDataContainer.innerHTML =
+    '<p>Make: ' +
+    carData.make +
+    '</p>' +
+    '<p>Model: ' +
+    carData.model +
+    '</p>' +
+    '<p>City: ' +
+    carData.city +
+    '</p>' +
+    '<p>Transmission: ' +
+    carData.transmission +
+    '</p>' +
+    '<p>Fuel Type: ' +
+    carData.fuelType +
+    '</p>' +
+    '<p>Salesperson Name: ' +
+    getSalespersonName(carData.salespersonId) +
+    '</p>' +
+    '<div style="border: 2px solid black; display: inline-block;">' +
+'<a href="' + carData.link + '" target="_blank">' +
+'<img src="' + carData.image + '" alt="Car Image">' +
+'</a>' +
+'</div>';
+
+            carDataContainer.style.border = '2px solid black';
+            carDataContainer.style.padding = '10px';
+            carDataContainer.style.width = '200px';
+
+            container.appendChild(carDataContainer);
+
+            var goBackButton = document.createElement('button');
+            goBackButton.textContent = 'Go Back';
+            goBackButton.style.backgroundColor = '#66cdaa';
+            goBackButton.style.fontSize = '12px';
+            goBackButton.style.padding = '10px 20px';
+            goBackButton.style.margin = '5px';
+            goBackButton.style.cursor = 'pointer';
+            goBackButton.style.borderRadius = '5px';
+            goBackButton.style.border = 'none';
+            goBackButton.style.outline = 'none';
+            goBackButton.addEventListener('click', function () {
+              var carDataContainers = document.querySelectorAll('.car-data-container');
+              carDataContainers.forEach(function (container) {
+                container.remove();
+              });
+
+              goBackButton.style.display = 'none';
+            });
+
+            container.appendChild(goBackButton);
+
+            event.target.appendChild(container);
+          } else {
+            dataDisplay.innerHTML = '<p>Error loading data</p>';
+          }
+        } else {
+          dataDisplay.innerHTML = '<p>Error loading data</p>';
+        }
+      }
+    };
+
+    xhr.open('GET', dataUrl, true);
+    xhr.send();
+  }
+});
+
+function getSalespersonName(salespersonId) {
+  var salespersons = [
+    { id: 1, name: "Adam Malik" },
+    { id: 2, name: "Zain Ahmed" },
+    { id: 3, name: "Ishaq Khan" },
+    { id: 4, name: "Rayyan Aziz" },
+    { id: 5, name: "Haris Abbas" },
+    { id: 6, name: "Bilal Hassan" },
+    { id: 7, name: "Kareem Farooq" },
+    { id: 8, name: "Imran Akhtar" },
+    { id: 9, name: "Saifullah Ali" },
+    { id: 10, name: "Hamza Rahman" },
+    { id: 11, name: "Amin Sharif" },
+    { id: 12, name: "Tariq Siddiqui" },
+    { id: 13, name: "Aisha Khan" },
+    { id: 14, name: "Farida Patel" },
+    { id: 15, name: "Leila Ali" },
+    { id: 16, name: "Yasmin Malik" },
+    { id: 17, name: "Sameera Khan" },
+    { id: 18, name: "Hana Ahmed" },
+    { id: 19, name: "Mariam Rahman" },
+    { id: 20, name: "Fatima Abbas" },
+    { id: 21, name: "Sarah Akhtar" },
+    { id: 22, name: "Zara Farooq" },
+    { id: 23, name: "Nadia Sharif" },
+    { id: 24, name: "Alia Siddiqui" }
+];
+
+  
+var salesperson = salespersons.find(function (sp) {
+    return sp.id === salespersonId;
+  });
+
+  return salesperson ? salesperson.name : "Salesperson not found";
+}
+
+    goBackButton.addEventListener('click', function () {
+      dataDisplay.innerHTML = '';
+      goBackButton.style.display = 'none';
+    });
+
+    function showNormal() {
+      document.getElementById('zoomImage').src = 'Images/mercedes 2017.jpg';
+    }
+
+    let isFullScreen = false;
+
+    function toggleFullScreen() {
+      const zoomImage = document.getElementById('zoomImage');
+
+      if (!isFullScreen) {
+        requestFullScreen(zoomImage);
+      } else {
+        exitFullScreen();
+      }
+
+      isFullScreen = !isFullScreen;
+    }
+
+    function requestFullScreen(element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+
+    function exitFullScreen() {
+      if (document.exitFullscreen) {
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+
+    document.getElementById('normalButton').addEventListener('click', showNormal);
+    document.getElementById('backButton').addEventListener('click', () => showSideView('back'));
+    document.getElementById('leftViewButton').addEventListener('click', () => showSideView('left'));
+    document.getElementById('rightViewButton').addEventListener('click', () => showSideView('right'));
+    document.getElementById('zoomInButton').addEventListener('click', zoomIn);
+    document.getElementById('zoomOutButton').addEventListener('click', zoomOut);
+    document.getElementById('fullScreenButton').addEventListener('click', toggleFullScreen);
+
+    
+
+    </script>
+    
+  </body>
+  </html>

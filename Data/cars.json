@@ -1,0 +1,85 @@
+{
+    "cars": [
+      {
+        "brand": "Audi",
+        "model": "A3",
+        "link": "https://www.audi.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4",
+        "mileage": "25 mpg city / 33 mpg highway"
+      },
+      {
+        "brand": "BMW",
+        "model": "3 Series",
+        "link": "https://www.bmw.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4 or Inline-6",
+        "mileage": "26 mpg city / 36 mpg highway"
+      },
+      {
+        "brand": "Toyota",
+        "model": "Camry",
+        "link": "https://www.toyota.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4 or V6",
+        "mileage": "28 mpg city / 39 mpg highway"
+      },
+      {
+        "brand": "Honda",
+        "model": "Accord",
+        "link": "https://www.honda.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4 or V6",
+        "mileage": "30 mpg city / 38 mpg highway"
+      },
+      {
+        "brand": "Ford",
+        "model": "Mustang",
+        "link": "https://www.ford.com/",
+        "fuelType": "Gasoline",
+        "engineType": "V6 or V8",
+        "mileage": "15 mpg city / 24 mpg highway"
+      },
+      {
+        "brand": "Tesla",
+        "model": "Model 3",
+        "link": "https://www.tesla.com/",
+        "fuelType": "Electric",
+        "engineType": "Electric Motor",
+        "mileage": "Up to 353 miles per charge"
+      },
+      {
+        "brand": "VW",
+        "model": "Polo",
+        "link": "https://www.vw.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4",
+        "mileage": "28 mpg city / 40 mpg highway"
+      },
+      {
+        "brand": "VW",
+        "model": "Golf",
+        "link": "https://www.vw.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-4",
+        "mileage": "28 mpg city / 36 mpg highway"
+      },
+      {
+        "brand": "Lexus",
+        "model": null,
+        "link": "https://www.lexus.com/",
+        "fuelType": "Varies",
+        "engineType": "Varies",
+        "mileage": "Varies"
+      },
+      {
+        "brand": "Audi",
+        "model": "RS3",
+        "link": "https://www.audi.com/",
+        "fuelType": "Gasoline",
+        "engineType": "Inline-5",
+        "mileage": "19 mpg city / 28 mpg highway"
+      }
+    ]
+  }
+  

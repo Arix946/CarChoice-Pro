@@ -1,0 +1,17 @@
+{
+  "name": "CarChoice Pro",
+  "short_name": "CarChoice Pro",
+  "description": "Your Ultimate Car Guide App",
+  "start_url": "http://127.0.0.1:5500/Home.html",
+  "id": "/Home.html",  
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
+  "icons": [
+    {
+      "src": "/Images/CarChoicePro.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

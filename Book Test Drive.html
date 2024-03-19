@@ -1,0 +1,572 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="manifest" href="Data/manifest.json">
+<style>
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .button-link.previous,
+  .button-link.next {
+    display: inline-block;
+    padding: 5px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .button-link.previous {
+    background-color: #FF5722;
+  }
+
+  .button-link.next {
+    background-color: #99CCFF;
+  }
+
+  nav ul li:nth-child(2) a {
+    color: #FFD580;
+  }
+
+  nav ul li:nth-child(3) a {
+    color: #fffacd;
+  }
+
+  nav ul li:nth-child(4) a {
+    color: #C4A484;
+  }
+
+  nav ul li:nth-child(5) a {
+    color: #b0c4de;
+  }
+
+  nav ul li:nth-child(6) a {
+    color: #00CED1;
+  }
+
+  footer nav ul li:nth-child(1) a {
+    color: #CBC3E3;
+  }
+
+  .app-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
+  .app-logo a img {
+    max-width: 200%;
+    height: 100px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  #calendar-container {
+    flex-shrink: 0;
+    width: 40%;
+    margin-right: 20px;
+  }
+
+  #filters-container {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .prev,
+  .next {
+    cursor: pointer;
+    padding: 5px;
+    background-color: #ADD8E6;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin: 2px;
+    margin-top: 10px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid black;
+    margin-top: 10px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  th {
+    background-color: #F4E6D4;
+    color: black;
+    border: 2px solid black;
+  }
+
+  td {
+    background-color: #fff;
+    border: 2px solid black;
+  }
+
+  .main-content {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .booking-result-container {
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  #bookingResultContainer {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-top: -250px;
+    margin-left: 20px;
+}
+
+  p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+        @media screen and (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      #calendar-container {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      #filters-container {
+        margin-top: 20px;
+      }
+
+      .prev,
+      .next {
+        margin-top: 20px;
+      }
+
+      main,
+      .app-logo,
+      header,
+      nav ul {
+        text-align: center;
+      }
+
+      nav ul {
+        padding: 0;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 5px 0;
+      }
+
+      .booking-result-container {
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 10px;
+    width: 200px;
+    height: 360px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: -200px;
+    margin-left: -220px;
+    margin-top: -40px;
+  }
+
+  #bookingResultContainer {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: -250px;
+    margin-top: -250px;
+    margin-left: 20px;
+}
+
+
+    }
+
+</style>
+
+    
+  </head>
+  <body>
+  
+  <div>
+    <div id="page-preloader">
+        <div id="preloader"></div>
+    </div>
+    
+       <div>
+    <div id="preloader-container">
+        <a href="Home.html" id="return-home">
+            <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+        </a>
+    </div>
+    
+    <header>
+    
+      <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+        <nav>
+            <ul>
+                
+              <h1 class="text-success" style="margin: 0;">CarChoice Pro</h1>
+              <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+    
+              <br>
+
+              <li><a href="Home.html">Home</a></li>
+              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+                <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+              <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+              <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+              <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+              <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+    <main class="main-content">
+        <div id="calendar-container">
+          <button class="prev" onclick="prevMonth()" style="border: 2px solid;">❮ Prev</button>
+          <button class="next" onclick="nextMonth()" style="border: 2px solid;">Next ❯</button>    
+          
+          <br><br>
+
+            <h2 id="month-year">January 2024</h2>
+            <table id="calendar"></table>
+        </div>
+
+        <div id="filters-container">
+            <div>
+                <label for="make">Make:</label>
+                <select id="make"></select>
+            </div>
+
+            <div>
+                <label for="model">Model:</label>
+                <select id="model"></select>
+            </div>
+
+            <div>
+                <label for="year">Year Of Car:</label>
+                <select id="year"></select>
+            </div>
+
+            <div>
+                <label for="city">City:</label>
+                <select id="city"></select>
+            </div>
+
+            <div>
+                <label for="transmission">Transmission Type:</label>
+                <select id="transmission"></select>
+            </div>
+
+            <div>
+                <label for="fuel">Fuel Type:</label>
+                <select id="fuel"></select>
+            </div>
+
+            <div>
+                <label for="time">Time:</label>
+                <select id="time"></select>
+            </div>
+
+            <div>
+            <div id="mobileContainer">
+              <label for="mobile">Mobile Number:</label>
+              <input type="tel" id="mobile" placeholder="Input Your Mobile Number:" style="border: 2px solid black; text-align: center;">
+            </div>
+
+            <br>
+
+            <div>
+              <div id="buttons-container" style="display: flex; gap: 10px;">
+                <button onclick="bookTestDrive()" style="background-color: #3498db; color: black; width: 100px; border-radius: 8px;">Book Test Drive</button>
+                <button onclick="clearFilters()" style="background-color: #e74c3c; color: black; border: 2px solid; border-radius: 8px; height: 30px; width: 80px;">Clear</button>
+              </div>
+          </div>
+          
+            <br>
+
+            <div>
+                <div id="bookingResultContainer"></div>
+                <div id="bookingResultContainer" style="float: right; margin-right: 20px; margin-top: -300px; margin-left: 20px;"></div>
+            </div>
+        </div>
+    </main>
+
+    <div>
+        <a href="Location Based Screen.html" class="button-link previous">
+            <img src="images/back.png" alt="Previous" class="button-image"/>
+        </a>
+        
+        <a href="CarsShowcase.html" class="button-link next">
+            <img src="images/next.png" alt="Next" class="button-image"/>
+        </a>
+        </div>
+        
+          <footer>
+                <nav>
+                    <ul>
+                        <li><a href="Contact Us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </footer>
+
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+          function generateCalendar(year, month) {
+            const calendar = document.getElementById("calendar");
+            const monthYear = document.getElementById("month-year");
+
+            let date = new Date(year, month - 1, 1);
+            let daysInMonth = new Date(year, month, 0).getDate();
+            let firstDay = new Date(year, month - 1, 1).getDay();
+
+            let html = '<tr>';
+            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+            for (let i = 0; i < dayNames.length; i++) {
+                html += '<th>' + dayNames[i] + '</th>';
+            }
+            html += '</tr><tr>';
+
+            for (let i = 0; i < firstDay; i++) {
+                html += '<td></td>';
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                html += '<td onclick="selectDate(this)">' + day + '</td>';
+
+                if ((firstDay + day) % 7 === 0) {
+                    html += '</tr><tr>';
+                }
+            }
+
+            html += '</tr>';
+
+            calendar.innerHTML = html;
+            monthYear.innerHTML = new Intl.DateTimeFormat('en-UK', { year: 'numeric', month: 'long' }).format(date);
+        }
+
+        function selectDate(cell) {
+            const cells = document.querySelectorAll('#calendar td');
+            cells.forEach((cell) => {
+                cell.style.backgroundColor = '';
+            });
+
+            cell.style.backgroundColor = 'lightblue';
+        }
+
+        function prevMonth() {
+            let currentDate = new Date(document.getElementById("month-year").textContent);
+            let prevMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1);
+            generateCalendar(prevMonthDate.getFullYear(), prevMonthDate.getMonth() + 1);
+        }
+
+        function nextMonth() {
+            let currentDate = new Date(document.getElementById("month-year").textContent);
+            let nextMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+            generateCalendar(nextMonthDate.getFullYear(), nextMonthDate.getMonth() + 1);
+        }
+
+        let today = new Date();
+        generateCalendar(today.getFullYear(), today.getMonth() + 1);
+
+          function populateDropdown(elementId, options) {
+            var dropdown = $('#' + elementId);
+            dropdown.empty();
+            $.each(options, function (index, value) {
+                dropdown.append($('<option>').text(value).attr('value', value));
+            });
+        }
+
+        function loadJSONData(callback) {
+    $.getJSON('Data/booktestdrive.json', function (data) {
+        callback(data);
+    });
+}
+
+function initializeDropdowns(jsonData) {
+    populateDropdown('make', jsonData.makes);
+    populateDropdown('model', jsonData.models);
+    populateDropdown('year', jsonData['Year Of Car']);
+    populateDropdown('city', jsonData.cities);
+    populateDropdown('transmission', jsonData.transmissionTypes);
+    populateDropdown('fuel', jsonData.fuelTypes);
+
+    var timeOptions = jsonData.Time.map(slot => slot.start + ' - ' + slot.end);
+    timeOptions.unshift("Please Select An Time");
+    populateDropdown('time', timeOptions);
+}
+
+function filterResults() {
+    var selectedMake = $('#make').val();
+    var selectedModel = $('#model').val();
+    var selectedYear = $('#year').val();
+    var selectedCity = $('#city').val();
+    var selectedTransmission = $('#transmission').val();
+    var selectedFuel = $('#fuel').val();
+    var selectedTime = $('#time').val();
+}
+
+loadJSONData(function (jsonData) {
+    initializeDropdowns(jsonData);
+});
+
+let bookingCounter = 1;
+
+function bookTestDrive() {
+    const selectedMake = $('#make').val();
+    const selectedModel = $('#model').val();
+    const selectedYear = $('#year').val();
+    const selectedCity = $('#city').val();
+    const selectedTransmission = $('#transmission').val();
+    const selectedFuel = $('#fuel').val();
+    const selectedTime = $('#time').val();
+    
+    const mobileNumber = $('#mobile').val();
+
+    const selectedDateCell = document.querySelector('#calendar td[style="background-color: lightblue;"]');
+
+    if (selectedMake && selectedModel && selectedYear && selectedCity && selectedTransmission && selectedFuel && selectedTime) {
+        if (selectedDateCell) {
+            const selectedDay = selectedDateCell.textContent;
+            const currentDate = new Date(document.getElementById("month-year").textContent);
+            const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), selectedDay);
+
+            const formattedDate = `${('0' + selectedDate.getDate()).slice(-2)}/${('0' + (selectedDate.getMonth() + 1)).slice(-2)}/${selectedDate.getFullYear()}`;
+
+            displayBookingResultWithDate(selectedMake, selectedModel, selectedYear, selectedCity, selectedTransmission, selectedFuel, selectedTime, formattedDate, mobileNumber);
+        } else {
+            displayErrorMessage("Kindly Choose Options From Filters. Please Select Date From Calendar Before Proceeding To Book Test Drive.");
+        }
+    } else {
+    }
+}
+
+function selectDate(cell) {
+    const cells = document.querySelectorAll('#calendar td');
+    cells.forEach(cell => cell.style.backgroundColor = '');
+
+    cell.style.backgroundColor = 'lightblue';
+
+    const selectedDay = cell.textContent;
+    const currentDate = new Date(document.getElementById("month-year").textContent);
+    const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), selectedDay);
+
+    const formattedDate = `${('0' + selectedDate.getDate()).slice(-2)}/${('0' + (selectedDate.getMonth() + 1)).slice(-2)}/${selectedDate.getFullYear()}`;
+}
+
+function generateBookingReference() {
+    const digits = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    let referenceNumber = '';
+
+    for (let i = 0; i < 8; i++) {
+        const rand = Math.floor(Math.random() * digits.length);
+        referenceNumber += digits[rand];
+    }
+
+    return referenceNumber;
+}
+
+function displayBookingResult(selectedMake, selectedModel, selectedYear, selectedCity, selectedTransmission, selectedFuel, selectedTime, selectedDate, bookingReference, mobileNumber) {
+    const resultContainer = document.getElementById('bookingResultContainer');
+    resultContainer.innerHTML = `
+        <div class="booking-result-container">
+            <p>Test Drive Has Been Booked!</p>
+            <p>Make: ${selectedMake}</p>
+            <p>Model: ${selectedModel}</p>
+            <p>Year: ${selectedYear}</p>
+            <p>City: ${selectedCity}</p>
+            <p>Transmission: ${selectedTransmission}</p>
+            <p>Fuel: ${selectedFuel}</p>
+            <p>Time: ${selectedTime}</p>
+            <p>Scheduled Test Drive Date: ${selectedDate}</p>
+            <p>Reference Number: ${bookingReference}</p>
+            <p>Test Drive Date Delivered To Mobile: ${mobileNumber}</p>
+        </div>
+    `;
+}
+
+function displayErrorMessage(message) {
+    const resultContainer = document.getElementById('bookingResultContainer');
+    resultContainer.innerHTML = `
+        <div style="border: 2px solid black; padding: 10px; margin-top: 10px; font-size: 14px; color: red; width: 200px; text-align: center;">
+            ${message}
+        </div>
+    `;
+}
+
+function clearFilters() {
+    $('#make, #model, #year, #city, #transmission, #fuel, #time').val('');
+
+    document.querySelectorAll('#calendar td').forEach(cell => cell.style.backgroundColor = '');
+
+    $('#make').val('Please Select An Make');
+    $('#model').val('Please Select An Model');
+    $('#year').val('Please Select An Year Of Car');
+    $('#city').val('Please Select An City');
+    $('#transmission').val('Please Select An Transmission');
+    $('#fuel').val('Please Select An Fuel Type');
+    $('#time').val('Please Select An Time');
+
+    document.getElementById('bookingResultContainer').innerHTML = '';
+}
+
+function displayBookingResultWithDate(selectedMake, selectedModel, selectedYear, selectedCity, selectedTransmission, selectedFuel, selectedTime, selectedDate, mobileNumber) {
+    const reference = generateBookingReference();
+    displayBookingResult(selectedMake, selectedModel, selectedYear, selectedCity, selectedTransmission, selectedFuel, selectedTime, selectedDate, reference, mobileNumber);
+}
+
+
+
+            </script>
+
+<body>
+</html>

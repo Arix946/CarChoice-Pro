@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/script.js"></script>
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+         header {
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+      }
+
+      
+      #addToFavorites,
+        #removeFromFavorites {
+            padding: 10px 15px; 
+            border: none; 
+            cursor: pointer;
+        }
+
+        .previous {
+            background-color:   #C4A484; 
+        color: #fff; 
+        padding: 5px 5px; 
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .next {
+        background-color: #FFCCCB; 
+        color: #fff; 
+        padding: 5px 5px; 
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    #app-description {
+        background-color: #fffacd;
+        padding: 20px;
+        border-radius: 10px; 
+    }
+
+    
+    nav ul li:nth-child(2) a {
+          color: 	#FFD580;
+      }
+  
+      nav ul li:nth-child(3) a {
+          color: #fffacd;
+      }
+  
+      nav ul li:nth-child(4) a {
+          color: #C4A484;
+      }
+  
+      nav ul li:nth-child(5) a {
+          color: #b0c4de;
+      }
+  
+      nav ul li:nth-child(6) a {
+          color:  #00CED1;
+      }
+  
+      footer nav ul li:nth-child(1) a {
+          color: #CBC3E3;
+      }
+  
+      body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #app-description {
+            background-color: #FFCCCB; 
+            padding: 20px; 
+            border: 4px solid black; 
+            margin: 20px; 
+            font-size: 12px; 
+        }
+
+        #section1,
+        #section2 {
+            margin-bottom: 10px;
+        }
+
+        .app-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 40px; 
+  margin-right: 20px; 
+  margin-bottom: 10px;
+}
+
+        .app-logo a img {
+            max-width: 200%;
+            height: 100px;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        #buttonContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 10px;
+}
+
+#consentBtn {
+    background-color: #FF80FF;
+    color: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+#myBtn {
+    background-color: #FFD580;
+    color: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+        @media screen and (max-width: 768px) {
+            main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+            body {
+                font-size: 16px;
+            }
+        
+            .app-logo,
+            header,
+            .featured-car,
+            .search-button {
+                text-align: center;
+            }
+        
+            nav ul {
+                text-align: center;
+                padding: 0;
+            }
+        
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+        
+        
+    </style>
+
+<script>
+   
+   var originalColor = "black"; 
+
+        function changeColor(color) {
+            var appDescription = document.getElementById("app-description");
+            var descriptions = appDescription.querySelectorAll("p");
+            var consoleMessage = document.getElementById("console-message");
+
+            for (var i = 0; i < descriptions.length; i++) {
+                descriptions[i].style.color = (color === "Please Select An Color") ? originalColor : color;
+            }
+
+            var message = "Text color has been changed to " + ((color === "Please Select An Color") ? originalColor : color);
+            consoleMessage.innerHTML = message;
+
+            if (color === "Please Select An Color") {
+            }
+        }
+</script>
+
+
+</head>
+<body>
+
+    <div>
+<div id="page-preloader">
+    <div id="preloader"></div>
+</div>
+
+   <div>
+<div id="preloader-container">
+    <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+    </a>
+</div>
+
+<header>
+
+    <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+        
+        <nav>
+            <ul>
+                <h1 class="text-warning">CarChoice Pro</h1>
+                <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+                <br>
+
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About Us.html">About Us</a></li>
+            <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+            <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+            <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+            <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+            <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+            <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main>
+    
+        <header>
+            <a href="Home.html" style="text-decoration: none;">
+                <h1 class="text-warning" style="margin: 0; cursor: pointer;">About Us</h2>
+            </a>
+        </header>
+
+        <br>
+
+        <div>
+            <button id="consentBtn" style="border-radius: 8px; height: 30px; width: 120px;">Consent</button>
+        </div>
+        
+        <div>
+            <div id="messageContainer"></div>
+        </div>
+            <br>
+      
+        <form name="changeColor Form">
+   
+            <select name="color" onchange="changeColor(this.value)">
+                <option value="Please Select An Color">Please Select An Color</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
+                <option value="purple">Purple</option>
+                <option value="pink">Pink</option>
+                <option value="turquoise">Turquoise</option>
+                <option value="lavender">Lavender</option>
+                <option value="cyan">Cyan</option>
+                <option value="maroon">Maroon</option>
+                <option value="indigo">Indigo</option>
+                <option value="teal">Teal</option>
+                <option value="beige">Beige</option>
+                <option value="brown">Brown</option>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="grey">Grey</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="Teal">Teal</option>
+                <option value="Crimson">Crimson</option>
+                <option value="Orchid">Orchid</option>
+                <option value="Plum">Plum</option>
+                <option value="Sienna">Sienna</option>
+                <option value="Ivory">Ivory</option>
+                <option value="coral">Coral</option>
+                <option value="Violet">Violet</option>
+                <option value="Salmon">Salmon</option>
+                <option value="Goldenrod">Goldenrod</option>
+                <option value="Chocolate">Chocolate</option>
+                <option value="Azure">Azure</option>
+                <option value="Magenta">Magenta</option>
+            </select>
+    
+            <div>
+            <section id="app-description">
+                <div id="section1"></div>
+                <div id="section2"></div>
+                <div id="section3"></div>
+                </div>
+
+                <div>
+                    <div id="console-message"></div>
+                </div>
+            
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        fetch('Data/App.json')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`Network response was not ok: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data && data.appDescription) {
+                                    document.getElementById('section1').innerHTML = `<p>${data.appDescription.section1}</p>`;
+                                    document.getElementById('section2').innerHTML = `<p>${data.appDescription.section2}</p>`;
+                                    document.getElementById('section3').innerHTML = `<p>${data.appDescription.section3}</p>`;
+                                } else {
+                                    console.error('Invalid JSON structure or missing appDescription');
+                                }
+                            })
+                            .catch(error => console.error('Error fetching or parsing JSON:', error));
+                    });
+                </script>
+            </section>
+            
+    </main>
+    
+    <div>
+<a href="Home.html" class="button-link previous">
+    <img src="images/back.png" alt="Previous" class="button-image" />
+</a>
+
+<a href="Price Lookup Screen.html" class="button-link next">
+    <img src="images/next.png" alt="Next" class="button-image" />
+</a>
+   </div>
+           
+<footer>
+    <nav>
+        <ul>
+            <li><a href="Contact Us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script>
+
+const consentBtn = document.getElementById("consentBtn");
+const messageContainer = document.getElementById("messageContainer");
+
+consentBtn.addEventListener("click", function () {
+  messageContainer.textContent = "By utilizing CarGuide Pro, you've implicitly consented to data privacy within our company.";
+
+  setTimeout(function () {
+    messageContainer.textContent = "";
+  }, 10000);
+});
+
+  </script>
+  
+</body>
+</html>

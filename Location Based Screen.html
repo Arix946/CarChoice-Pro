@@ -1,0 +1,611 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+  <link rel="manifest" href="Data/manifest.json">
+  <style>
+    header {
+     background-color: #333;
+     color: #fff;
+     padding: 10px;
+     text-align: center;
+ }
+
+ .map-container {
+            border: 2px solid black;
+            width: 50%;
+        }
+
+        .customButton {
+    background-color:  #FF00FF; 
+    color: #FFFFFF; 
+    border: none; 
+    padding: 5px 5px; 
+    cursor: pointer;
+    border: 2px solid #000
+}
+
+#clear-button {
+    background-color: #808000; 
+    color: #ADD8E6; 
+    border: none; 
+    cursor: pointer;
+}
+
+#resetFilters {
+    background-color: #FFA500; 
+}
+
+#clearAll {
+    background-color: #C4A484; 
+    padding: 5px 5px; 
+}
+
+#detectLocation {
+    background-color: #008080; 
+    color: white; 
+    padding: 5px 5px; 
+    border: none; 
+    cursor: pointer; 
+  }
+
+  #includeBtn {
+    background-color: green;
+    color: white;
+}
+
+#removeBtn {
+    background-color: red;
+    color: white;
+}
+
+
+  .previous {
+            background-color:   #01F9C6; 
+        color: #fff; 
+        padding: 5px 5px; 
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .next {
+        background-color: 	#FFA07A; 
+        color: #fff; 
+        padding: 5px 5px; 
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .customButton {
+        border-radius: 5px; 
+    }
+
+    #detectLocation {
+        border-radius: 8px; 
+    }
+
+    nav ul li:nth-child(2) a {
+          color: 	#FFD580;
+      }
+  
+      nav ul li:nth-child(3) a {
+          color: #fffacd;
+      }
+  
+      nav ul li:nth-child(4) a {
+          color: #C4A484;
+      }
+  
+      nav ul li:nth-child(5) a {
+          color: #b0c4de;
+      }
+  
+      nav ul li:nth-child(6) a {
+          color:  #00CED1;
+      }
+  
+      footer nav ul li:nth-child(1) a {
+          color: #CBC3E3;
+      }
+      
+      .app-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 40px; 
+  margin-right: 20px; 
+  margin-bottom: 10px;
+}
+
+        .app-logo a img {
+            max-width: 200%;
+            height: 100px;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+        @media screen and (max-width: 768px) {
+            main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+            body {
+                font-size: 16px;
+            }
+
+            .app-logo {
+                text-align: center;
+            }
+
+            header {
+                text-align: center;
+            }
+
+            nav ul {
+                text-align: center;
+                padding: 0;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 5px 0; 
+            }
+    
+            .customButton {
+    padding: 8px 12px;
+    font-size: 14px; 
+  }
+
+  #myBtn {
+    padding: 8px 12px;
+    font-size: 12px; 
+  }
+ 
+  .map-container {
+                width: 100%;
+            }
+        }
+        
+        #map {
+            height: 400px;
+            width: 600px;
+        }
+
+        
+
+    </style>
+
+</head>
+<body>
+
+    <div>
+<div id="page-preloader">
+    <div id="preloader"></div>
+</div>
+
+   <div>
+<div id="preloader-container">
+    <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+    </a>
+</div>
+
+<header>
+
+    <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+
+        <nav>
+            <ul>
+                <h1 class="text-success">CarChoice Pro</h1>
+                <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+                <br>
+                
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+                <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+                <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+                <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+                <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+                <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+              </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="locationSelector">
+            <input type="text" id="userLocation" placeholder="Enter Your Location:">
+            <button id="detectLocation" style="border: 2px solid black; border-radius: 8px;">Detect Location</button>
+        </section>
+        
+        <br>
+
+        <div>
+
+        <div>
+            <label for="make">Select An Make:</label>
+            <select id="make"></select>
+        </div>
+        
+        <div>
+            <label for="model">Select An Model:</label>
+            <select id="model"></select>
+        </div>
+        
+        <div>
+            <label for="year-filter">Select An Year:</label>
+            <select id="year-filter"></select>
+        </div>
+        
+        <div>
+            <label for="city-select">Select An City:</label>
+            <select id="city-select"></select>
+        </div>
+        
+        <div>
+            <label for="transmissionType">Select An Transmission Type:</label>
+            <select id="transmissionType"></select>
+        </div>
+        
+        <div>
+            <label for="Fuel-filter">Select An Fuel Type:</label>
+            <select id="Fuel-filter"></select>
+        </div>
+        
+        <div>
+            <label for="sortSelect">Select An Sort By:</label>
+            <select id="sortSelect"></select>
+        </div>
+        
+        <div>
+            <label for="sortOrder">Select An Order:</label>
+            <select id="sortOrder"></select>
+        </div>
+
+        <div id="search-results-display"></div>
+        </div>
+
+        <br>
+
+        <div>
+        <section id="filterReset">
+            <button id="searchButton" class="customButton">Search</button>
+            <button id="resetFilters" class="customButton">Reset Filters</button>
+            <button id="clearAll" class="customButton">Clear All</button>
+            <button id="includeBtn" class="customButton">Include In Favourites</button>
+            <button id="removeBtn" class="customButton">Exclude From Favourites</button>
+        </section>
+        </div>
+        
+        <br>
+
+        <div>
+            <div id="messageContainer"></div>
+            <p id="locationDisplay"></p>
+        </div>
+
+        <div>
+        <div class="map-container">
+            <div id="map" style="height: 400px; width: 100%;"></div>
+        </div>
+        
+    </main>
+
+            <div>
+              <a href="Car Details Screen.html" class="button-link previous">
+                <img src="images/back.png" alt="Previous" class="button-image" />
+            </a>
+            
+            <a href="Book Test Drive.html" class="button-link next">
+                <img src="images/next.png" alt="Next" class="button-image" />
+            </a>
+            </div>
+            
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
+
+    
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
+<script>
+document.getElementById("clearAll").addEventListener("click", clearAllFilters);
+document.getElementById("searchButton").addEventListener("click", () => {
+    const filters = ["make", "model", "year-filter", "city-select", "transmissionType", "Fuel-filter", "sortSelect", "sortOrder", "userLocation"];
+    const searchResults = {};
+
+    filters.forEach(filter => {
+        const filterValue = document.getElementById(filter).value;
+
+        if (filterValue !== `Select An ${filter.charAt(0).toUpperCase() + filter.slice(1)}`) {
+            searchResults[filter] = filterValue;
+        }
+    });
+
+    displaySearchResults(searchResults);
+});
+
+document.getElementById("resetFilters").addEventListener("click", resetFilters);
+document.getElementById("clearAll").addEventListener("click", clearAllFilters);
+
+document.getElementById("includeBtn").addEventListener("click", () => {
+    setMessage("Searched Results have been Included In Favourites.");
+    clearMessagesAfterDelay(10000); 
+});
+
+document.getElementById("removeBtn").addEventListener("click", () => {
+    setMessage("Searched Results have been Excluded From Favourites.");
+    clearMessagesAfterDelay(10000); 
+});
+
+const detectLocationBtn = document.getElementById('detectLocation');
+detectLocationBtn.addEventListener('click', detectLocation);
+
+
+const defaultMessages = {
+    make: "Select An Make",
+    model: "Select An Model",
+    "year-filter": "Select An Year",
+    "city-select": "Select An City",
+    transmissionType: "Select An Transmission Type",
+    "Fuel-filter": "Select An Fuel Type",
+    sortSelect: "Select An Sort By",
+    sortOrder: "Select An Order",
+    userLocation: "Select An User Location"
+};
+
+
+function resetFilters() {
+    const filterIds = [
+        "make",
+        "model",
+        "year-filter",
+        "city-select",
+        "transmissionType",
+        "Fuel-filter",
+        "sortSelect",
+        "sortOrder",
+        "userLocation"
+    ];
+
+    filterIds.forEach(id => {
+        const element = document.getElementById(id);
+
+        if (element) {
+            switch (element.type) {
+                case 'text':
+                case 'select-one':
+                    element.value = defaultMessages[id];
+                    break;
+                case 'select-multiple':
+                    Array.from(element.options).forEach(option => option.selected = false);
+                    break;
+                case 'checkbox':
+                case 'radio':
+                    element.checked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
+    const fuelFilterElement = document.getElementById("Fuel-filter");
+    if (fuelFilterElement) {
+        const defaultOptionValue = defaultMessages["Fuel-filter"];
+
+        const defaultOptionIndex = Array.from(fuelFilterElement.options).findIndex(option => option.value === defaultOptionValue);
+
+        fuelFilterElement.selectedIndex = defaultOptionIndex >= 0 ? defaultOptionIndex : 0;
+    }
+
+    clearMessages();
+    setMessage("Filters have been reset");
+    clearMessagesAfterDelay(10000);
+}
+
+
+function clearAllFilters() {
+    const filterIds = [
+        "make",
+        "model",
+        "year-filter",
+        "city-select",
+        "transmissionType",
+        "Fuel-filter",
+        "sortSelect",
+        "sortOrder",
+        "userLocation"
+    ];
+
+    filterIds.forEach(id => {
+        const element = document.getElementById(id);
+
+        if (element) {
+            switch (element.type) {
+                case 'text':
+                case 'select-one':
+                    element.value = defaultMessages[id];
+                    break;
+                case 'select-multiple':
+                    Array.from(element.options).forEach(option => option.selected = false);
+                    break;
+                case 'checkbox':
+                case 'radio':
+                    element.checked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
+    const fuelFilterElement = document.getElementById("Fuel-filter");
+    if (fuelFilterElement) {
+        const defaultOptionValue = defaultMessages["Fuel-filter"];
+
+        const defaultOptionIndex = Array.from(fuelFilterElement.options).findIndex(option => option.value === defaultOptionValue);
+
+        fuelFilterElement.selectedIndex = defaultOptionIndex >= 0 ? defaultOptionIndex : 0;
+    }
+
+    clearMessages();
+    setMessage("All filters have been cleared");
+    clearMessagesAfterDelay(10000);
+}
+
+    const filtersContainer = document.getElementById("filters-container");
+    if (filtersContainer) {
+        filtersContainer.style.display = "none";
+    }
+
+    const resultsDisplay = document.getElementById("search-results-display");
+    resultsDisplay.innerHTML = "";
+
+function setMessage(message) {
+    document.getElementById('messageContainer').textContent = message;
+}
+
+function clearMessages() {
+    document.getElementById('messageContainer').textContent = "";
+}
+
+function clearMessagesAfterDelay(delay) {
+    setTimeout(() => {
+        clearMessages();
+    }, delay);
+}
+
+function displaySearchResults(results) {
+    const resultsDisplay = document.getElementById("search-results-display");
+
+    resultsDisplay.innerHTML = "";
+
+    const resultsParagraph = document.createElement("p");
+    resultsParagraph.textContent = "Search Results: " + JSON.stringify(results);
+
+    resultsDisplay.appendChild(resultsParagraph);
+}
+
+function detectLocation() {
+    const userLocationInput = document.getElementById("userLocation");
+    const typedLocation = userLocationInput.value;
+
+    const locationDisplay = document.getElementById("locationDisplay");
+    if (locationDisplay) {
+        locationDisplay.textContent = `User Location: ${typedLocation || "London"}`;
+    }
+
+    userLocationInput.placeholder = typedLocation || "London";
+}
+
+
+    function itWorks(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(`latitude: ${latitude}`);
+        console.log(`longitude: ${longitude}`);
+        initMap(latitude, longitude);
+    }
+
+    function itDoesntWork(error) {
+        console.log(`There is an error ${error}`);
+    }
+
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(itWorks, itDoesntWork);
+    }
+
+    function initMap(UserLat, UserLng) {
+        const myMap = L.map('map').setView([UserLat, UserLng], 15);
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(myMap);
+        const Umarker = L.marker([UserLat, UserLng]).addTo(myMap);
+        Umarker.bindPopup("Current Location");
+        myMap.fitBounds([
+            [UserLat, UserLng],
+            [UserLat, UserLng]
+        ]);
+    }
+
+    window.addEventListener("load", getLocation);
+
+    function populateDropdown(elementId, options) {
+        const dropdown = document.getElementById(elementId);
+
+        options.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.text = option.text;
+            if (option.disabled) {
+                optionElement.disabled = true;
+                optionElement.selected = true;
+            }
+            dropdown.appendChild(optionElement);
+        });
+    }
+
+    fetch('Data/Filters2.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            populateDropdown('make', data.div1.select1.options);
+            populateDropdown('model', data.div2.select2.options);
+            populateDropdown('year-filter', data.div3.select3.options);
+            populateDropdown('city-select', data.div4.select4.options);
+            populateDropdown('transmissionType', data.div5.select5.options);
+            populateDropdown('Fuel-filter', data.div6.select6.options);
+            populateDropdown('sortSelect', data.div7.section.select7.options);
+            populateDropdown('sortOrder', data.div7.div8.select8.options);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/script.js"></script>
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+        header {
+         background-color: #333;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+     }
+
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.myCanvas {
+    flex: 1;
+    margin-top: 20px;
+}
+
+#myCanvas {
+    width: 100%;
+    max-width: 2000px;
+    max-height: 600px;
+    border: 1px solid black;
+}
+
+
+.previous {
+    background-color: #CF9FFF;
+}
+
+.next {
+    background-color: #C8A2C8;
+}
+
+#AddToFavourites {
+    background-color: #FF00FF;
+}
+
+#RemoveFromFavourites {
+    background-color: #C4A484;
+}
+
+#ResetFilters {
+    background-color: #fffacd;
+}
+
+#clearAllFilters {
+    background-color: #90EE90;
+}
+
+#lookup-price {
+    background-color: #FFCCCB;
+}
+
+.calculator-container {
+    flex: 1;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#calculator {
+    width: 100%;
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #F1E5AC;
+}
+
+
+h2 {
+    border: 2px solid #000;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 220px;
+}
+
+
+nav ul li:nth-child(2) a {
+          color: 	#FFD580;
+      }
+  
+      nav ul li:nth-child(3) a {
+          color: #fffacd;
+      }
+  
+      nav ul li:nth-child(4) a {
+          color: #C4A484;
+      }
+  
+      nav ul li:nth-child(5) a {
+          color: #b0c4de;
+      }
+  
+      nav ul li:nth-child(6) a {
+          color:  #00CED1;
+      }
+  
+      footer nav ul li:nth-child(1) a {
+          color: #CBC3E3;
+      }
+  
+      .app-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 40px; 
+  margin-right: 20px; 
+  margin-bottom: 10px;
+}
+        .app-logo a img {
+            max-width: 200%;
+            height: 100px;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .myCanvas {
+    flex: 1;
+    margin-top: 20px;
+}
+
+#myCanvas {
+    width: 100%;
+    max-width: 2000px;
+    max-height: 600px;
+    border: 1px solid black;
+}
+
+  .calculator {
+    text-align: center;
+  }
+  
+  #display {
+    width: 200px;
+    margin-bottom: 10px;
+    border: 2px solid black; 
+  }
+  
+  .buttons button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    margin: 5px;
+    border: 2px solid black; 
+  }
+  
+  .calculator-container {
+  text-align: center;
+  border: 2px solid black;
+  background-color: #FFA07A; 
+  padding: 20px;
+  border-radius: 10px;
+  animation: glow 2s infinite alternate; 
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px hsl(0, 100%, 50%), 0 0 20px hsl(0, 100%, 50%); 
+  }
+  25% {
+    box-shadow: 0 0 15px hsl(90, 100%, 50%), 0 0 25px hsl(90, 100%, 50%); 
+  }
+  50% {
+    box-shadow: 0 0 10px hsl(180, 100%, 50%), 0 0 20px hsl(180, 100%, 50%); 
+  }
+  75% {
+    box-shadow: 0 0 15px hsl(270, 100%, 50%), 0 0 25px hsl(270, 100%, 50%); 
+  }
+  100% {
+    box-shadow: 0 0 10px hsl(360, 100%, 50%), 0 0 20px hsl(360, 100%, 50%); 
+  }
+}
+
+p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+div button {
+    border-radius: 8px;
+    width: 50%; 
+    height: 40px;
+    margin-bottom: 10px; 
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        max-width: 120%;
+        margin: 0 auto;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .app-logo {
+        text-align: center;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    nav ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar-item {
+        width: 100px;
+        margin: 5px;
+    }
+
+    #myCanvas {
+        max-width: 50%; 
+        max-height: 100%; 
+    }
+
+
+    }
+        
+    </style>
+    
+</head>
+<body>
+
+    <div>
+<div id="page-preloader">
+    <div id="preloader"></div>
+</div>
+
+   <div>
+<div id="preloader-container">
+    <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+    </a>
+</div>
+
+<header>
+
+    <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+
+        <nav>
+            <ul>
+                <h1 class="text-success">CarChoice Pro</h1>
+                <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+                <br>
+
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+                <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+                <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+                <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+                <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+                <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+              </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div>
+        <div class="price-lookup-form">
+            <h2 class="text-success">Price Lookup:</h2>       
+
+            <div id="additionalOptions">
+
+            <div>
+                <label for="make">Select An Make:</label>
+                <select id="make">
+                    <option value="Select An Make">Select An Make</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="model">Select An Model:</label>
+                <select id="model">
+                    <option value="Select An Model">Select An Model</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="year-filter">Select An Year:</label>
+                <select id="year-filter">
+                    <option value="Select An Year">Select An Year</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="city-select">Select An City:</label>
+                <select id="city-select">
+                    <option value="Select A City">Select An City</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="transmission-type">Select An Transmission Type:</label>
+                <select id="transmission-type">
+                    <option value="Select A Transmission Type">Select An Transmission Type</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="fuel-type">Select An Fuel Type:</label>
+                <select id="fuel-type">
+                    <option value="Select A Fuel Type">Select An Fuel Type</option>
+                </select>
+            </div>
+            
+
+            </div>
+            
+           <br>
+            
+           <div>
+            <button id="lookup-price" style="border-radius: 8px; width: 120px; height: 40px;">Lookup Price</button>
+            <button id="clear-results" style="border-radius: 8px; width: 80px; height: 40px; background-color: #F1E5AC;">Clear</button>
+            <button id="AddToFavourites" style="border-radius: 8px; width: 150px; height: 40px;">Add To Favourites</button>
+            <button id="RemoveFromFavourites" style="border-radius: 8px; width: 180px; height: 40px;">Remove Favourites</button>
+            <button id="ResetFilters" style="border-radius: 8px; width: 120px; height: 40px;">Reset Filters</button>
+            <button id="clearAllFilters" style="border-radius: 8px; width: 120px; height: 40px;">Clear filters</button>
+        </div>
+        
+
+        <div>
+            <div id="result"></div>
+            <div id="applied-filters"></div>
+            <div id="messageDisplay"></div>
+            <div id="message-container"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+
+            <div>
+                <div class="calculator-container">
+                    <div class="calculator">
+                    <input type="text" id="display" readonly>
+                    <div class="buttons">
+                      <button onclick="clearDisplay()">C</button>
+                      <button onclick="appendValue('/')">/</button>
+                      <button onclick="appendValue('*')">*</button>
+                      <button onclick="appendValue('7')">7</button>
+                      <button onclick="appendValue('8')">8</button>
+                      <button onclick="appendValue('9')">9</button>
+                      <button onclick="appendValue('-')">-</button>
+                      <button onclick="appendValue('4')">4</button>
+                      <button onclick="appendValue('5')">5</button>
+                      <button onclick="appendValue('6')">6</button>
+                      <button onclick="appendValue('+')">+</button>
+                      <button onclick="appendValue('1')">1</button>
+                      <button onclick="appendValue('2')">2</button>
+                      <button onclick="appendValue('3')">3</button>
+                      <button onclick="calculateResult()">=</button>
+                      <button onclick="appendValue('0')">0</button>
+                      <button onclick="appendValue('.')">.</button>
+                    </div>
+                  </div>
+            </div>
+        
+            <div>
+                <div class="myCanvas" style="flex: 1; margin-top: 20px;">
+                    <canvas id="myCanvas" width="800" height="350" style="width: 100%; max-width: 2000px; max-height: 600px; border: 1px solid black;"></canvas>
+                </div>
+            </div>
+            
+    </main>
+
+
+    <div>
+      <a href="About Us.html" class="button-link previous">
+        <img src="images/back.png" alt="Previous" class="button-image" />
+    </a>
+    
+    <a href="Car Search Screen.html" class="button-link next">
+        <img src="images/next.png" alt="Next" class="button-image" />
+    </a>
+    </div>
+    
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>     
+document.addEventListener("DOMContentLoaded", function () {
+    const makeSelect = document.getElementById("make");
+    const modelSelect = document.getElementById("model");
+    const yearSelect = document.getElementById("year-filter");
+    const citySelect = document.getElementById("city-select");
+    const transmissionSelect = document.getElementById("transmission-type");
+    const fuelSelect = document.getElementById("fuel-type");
+    const resultDiv = document.getElementById("result");
+
+    const displayFilters = function (filters) {
+        const filterDiv = document.getElementById("applied-filters");
+        filterDiv.textContent = "Applied Filters: ";
+
+        Object.keys(filters).forEach(filter => {
+            if (filters[filter]) {
+                const filterItem = document.createElement("span");
+                filterItem.textContent = `${filter}: ${filters[filter]} | `;
+                filterDiv.appendChild(filterItem);
+            }
+        });
+    };
+
+    const clearFilters = function () {
+        const filterDiv = document.getElementById("applied-filters");
+        filterDiv.textContent = "";
+
+        makeSelect.selectedIndex = 0;
+        modelSelect.selectedIndex = 0;
+        yearSelect.selectedIndex = 0;
+        citySelect.selectedIndex = 0;
+        transmissionSelect.selectedIndex = 0;
+        fuelSelect.selectedIndex = 0;
+    };
+
+    document.getElementById("lookup-price").addEventListener("click", async function () {
+
+        const userMake = makeSelect.value.toLowerCase();
+        const userModel = modelSelect.value.toLowerCase().replace(/\s/g, '');
+
+        const searchResults = {
+            make: userMake,
+            model: userModel,
+        };
+
+        try {
+            const pricesData = await fetch('/Data/Prices.json');
+            if (!pricesData.ok) {
+                throw new Error(`Failed to fetch prices. Status: ${pricesData.status}`);
+            }
+
+            const prices = await pricesData.json();
+
+            const matchingCar = prices.prices.find(car => {
+                return Object.keys(searchResults).every(filter => {
+                    return !searchResults[filter] || car[filter].toLowerCase().replace(/\s/g, '') === searchResults[filter];
+                });
+            });
+
+            if (matchingCar) {
+                resultDiv.textContent = `Matching Car Price: ${matchingCar.price}`;
+
+                displayFilters(searchResults);
+            } else {
+                resultDiv.textContent = "No matching car found.";
+            }
+        } catch (error) {
+            console.error("Error fetching prices:", error);
+        }
+    });
+
+    document.getElementById("clear-results").addEventListener("click", function () {
+    resultDiv.textContent = "";
+    clearFilters();
+    
+    document.getElementById("messageDisplay").innerText = "";
+});
+
+});
+
+var ctx = document.getElementById('myCanvas').getContext('2d');
+
+var data = [
+  {
+    "id": 1,
+    "make": "Toyota",
+    "model": "Camry",
+  },
+  {
+    "id": 2,
+    "make": "Honda",
+    "model": "Civic",
+  },
+  {
+    "id": 3,
+    "make": "Ford",
+    "model": "Mustang",
+  },
+  {
+    "id": 4,
+    "make": "BMW",
+    "model": "3 Series",
+  },
+  {
+    "id": 5,
+    "make": "Volkswagen",
+    "model": "Golf",
+  },
+  {
+    "id": 6,
+    "make": "Chevrolet",
+    "model": "Silverado",
+  },
+  {
+    "id": 7,
+    "make": "Subaru",
+    "model": "Outback",
+  },
+  {
+    "id": 8,
+    "make": "Mercedes-Benz",
+    "model": "E-Class",
+  },
+  {
+    "id": 9,
+    "make": "Hyundai",
+    "model": "Sonata",
+  },
+  {
+    "id": 10,
+    "make": "Nissan",
+    "model": "Altima",
+  },
+  {
+    "id": 11,
+    "make": "Tesla",
+    "model": "Model 3",
+  },
+  {
+    "id": 12,
+    "make": "Lexus",
+    "model": "RX",
+  },
+  {
+    "id": 13,
+    "make": "Audi",
+    "model": "A4",
+  },
+  {
+    "id": 14,
+    "make": "Jeep",
+    "model": "Wrangler",
+  },
+  {
+    "id": 15,
+    "make": "Porsche",
+    "model": "911",
+  },
+  {
+    "id": 16,
+    "make": "Kia",
+    "model": "Sportage",
+  },
+  {
+    "id": 17,
+    "make": "Volvo",
+    "model": "XC60",
+  },
+  {
+    "id": 18,
+    "make": "Dodge",
+    "model": "Charger",
+  },
+  {
+    "id": 19,
+    "make": "Subaru",
+    "model": "WRX",
+  },
+  {
+    "id": 20,
+    "make": "GMC",
+    "model": "Sierra",
+  },
+  {
+    "id": 21,
+    "make": "Volkswagen",
+    "model": "Polo",
+  },
+  {
+    "id": 22,
+    "make": "Ferrari",
+    "model": "[Ferrari 488 GTB]",
+  },
+  {
+    "id": 23,
+    "make": "Lamborghini",
+    "model": "[Lamborghini Huracán]",
+  },
+  {
+    "id": 24,
+    "make": "Volkswagen",
+    "model": "Golf Mk 8",
+  }
+];
+
+var countByCar = new Map();
+
+data.forEach(car => {
+    var key = car.make + ' ' + car.model;
+
+    if (countByCar.has(key)) {
+        countByCar.get(key).count++;
+        countByCar.get(key).salespersons.push(car.salespersonName || 'Unknown Salesperson');
+    } else {
+        countByCar.set(key, {
+            count: Math.floor(Math.random() * 10) + 1,
+            make: car.make,
+            model: car.model,
+        });
+    }
+});
+
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: Array.from(countByCar.keys()), 
+        datasets: [{
+            label: 'Cars',
+            data: Array.from(countByCar.values()).map(entry => entry.count),
+            backgroundColor: getBackgroundColors(countByCar.size),
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    var key = data.labels[tooltipItem.index];
+                    var entry = countByCar.get(key);
+                    var salespersons = entry?.salespersons || ['Unknown Salesperson'];
+                    return 'Make: ' + entry.make +
+                           '\nModel: ' + entry.model; 
+                }
+            }
+        }
+    }
+});
+
+
+function getRandomColor() {
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+function getBackgroundColors(numColors) {
+    var colors = [];
+    for (var i = 0; i < numColors; i++) {
+        colors.push(getRandomColor());
+    }
+    return colors;
+}
+
+
+document.getElementById("AddToFavourites").addEventListener("click", function () {
+      document.getElementById("messageDisplay").innerText = "The selected car price has been added to favorites.";
+    });
+
+    document.getElementById("RemoveFromFavourites").addEventListener("click", function () {
+      document.getElementById("messageDisplay").innerText = "The selected car price has been removed from favorites.";
+    });
+        
+    function resetFilters() {
+            document.getElementById("make").value = ''; 
+            document.getElementById("model").value = ''; 
+            document.getElementById("year-filter").value = ''; 
+            document.getElementById("city-select").value = ''; 
+            document.getElementById("transmission-type").value = ''; 
+            document.getElementById("fuel-type").value = '';
+
+            displayMessage("Filters have been reset");
+        }
+
+        function clearAllFilters() {
+            document.getElementById("make").value = ''; 
+            document.getElementById("model").value = ''; 
+            document.getElementById("year-filter").value = ''; 
+            document.getElementById("city-select").value = ''; 
+            document.getElementById("transmission-type").value = ''; 
+            document.getElementById("fuel-type").value = '';
+
+            displayMessage("Filters have been cleared");
+        }
+
+        function displayMessage(message) {
+            var messageContainer = document.getElementById("message-container");
+            messageContainer.innerHTML = message;
+
+            setTimeout(function() {
+                messageContainer.innerHTML = '';
+            }, 10000); 
+        }
+
+
+    
+document.getElementById('ResetFilters').addEventListener('click', function() {
+    resetFilters();
+});
+
+document.getElementById('clearAllFilters').addEventListener('click', function() {
+    clearAllFilters();
+});
+
+
+ fetch('Data/Filters.json')
+        .then(response => response.json())
+        .then(data => {
+            const makeDropdown = document.getElementById('make');
+            data.makes.forEach(make => {
+                const option = document.createElement('option');
+                option.value = make;
+                option.textContent = make;
+                makeDropdown.appendChild(option);
+            });
+
+            const modelDropdown = document.getElementById('model');
+            data.models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                modelDropdown.appendChild(option);
+            });
+
+            const yearDropdown = document.getElementById('year-filter');
+            data.years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearDropdown.appendChild(option);
+            });
+
+            const cityDropdown = document.getElementById('city-select');
+            data.cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+
+            const transmissionDropdown = document.getElementById('transmission-type');
+            data.transmissionTypes.forEach(transmission => {
+                const option = document.createElement('option');
+                option.value = transmission;
+                option.textContent = transmission;
+                transmissionDropdown.appendChild(option);
+            });
+
+            const fuelDropdown = document.getElementById('fuel-type');
+            data.fuelTypes.forEach(fuel => {
+                const option = document.createElement('option');
+                option.value = fuel;
+                option.textContent = fuel;
+                fuelDropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading data:', error));
+
+        let display = document.getElementById('display');
+
+function appendValue(value) {
+  display.value += value;
+}
+
+function clearDisplay() {
+  display.value = '';
+}
+
+function calculateResult() {
+  try {
+    display.value = eval(display.value);
+  } catch (error) {
+    display.value = 'Error';
+  }
+}
+
+    </script>
+    
+</body>
+</html>

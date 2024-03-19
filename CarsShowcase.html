@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.button-link.previous, .button-link.next {
+    display: inline-block;
+    padding: 5px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.button-link.previous {
+    background-color: #FF5722;
+}
+
+.button-link.next {
+    background-color: #99CCFF;
+}
+
+nav ul li:nth-child(2) a {
+    color: #FFD580;
+}
+
+nav ul li:nth-child(3) a {
+    color: #fffacd;
+}
+
+nav ul li:nth-child(4) a {
+    color: #C4A484;
+}
+
+nav ul li:nth-child(5) a {
+    color: #b0c4de;
+}
+
+nav ul li:nth-child(6) a {
+    color: #00CED1;
+}
+
+footer nav ul li:nth-child(1) a {
+    color: #CBC3E3;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin: 40px 20px 10px;
+}
+
+.app-logo a img {
+    max-width: 200%;
+    height: 100px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+p.slogan {
+    margin: 10px 0;
+    font-style: italic; 
+}
+
+.slideshow-container {
+  max-width: 400px; 
+  margin: auto;
+  overflow: hidden;
+  border: 2px solid black;
+  animation: glow 2s infinite alternate; 
+}
+
+    .slide {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    @keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+  }
+  25% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.7);
+  }
+  75% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+  }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .app-logo,
+    header,
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul {
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .slideshow-container {
+    max-width: 60%;
+  }
+
+}
+
+  </style>
+  </head>
+  <body>
+  
+  <div>
+    <div id="page-preloader">
+        <div id="preloader"></div>
+    </div>
+    
+       <div>
+    <div id="preloader-container">
+        <a href="Home.html" id="return-home">
+            <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+        </a>
+    </div>
+    
+    <header>
+    
+      <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+        <nav>
+            <ul>
+                
+              <h1 class="text-success" style="margin: 0;">CarChoice Pro</h1>
+              <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+    
+              <br>
+    
+              <li><a href="Home.html">Home</a></li>
+              <li><a href="About Us.html">About Us</a></li>
+              <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+              <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+              <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+              <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+              <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+              <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <header>
+            <a href="Home.html" style="text-decoration: none;">
+                <h1 class="text-warning" style="margin: 0; cursor: pointer;">Cars ShowCase SlideShow</h2>
+            </a>
+        </header>
+
+        <br>
+
+        <div>
+       <div class="slideshow-container">
+    <div class="slide">
+      <img src="Images/CarChoicePro.png" alt="CarChoicePro">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5607.JPG" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5608.JPG" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5609.JPG" alt="Slide 4">
+    </div>
+    <div class="slide">
+      <img src="Images/bmw i8.jpg" alt="Slide 5">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5611.JPG" alt="Slide 6">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5612.JPG" alt="Slide 7">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5613.JPG" alt="Slide 8">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5614.JPG" alt="Slide 9">
+    </div>
+    <div class="slide">
+      <img src="Images/bmw 3 series.jpg" alt="Slide 10">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5616.JPG" alt="Slide 11">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5617.JPG" alt="Slide 12">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5618.JPG" alt="Slide 13">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5619.JPG" alt="Slide 14">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5620.JPG" alt="Slide 15">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5621.JPG" alt="Slide 16">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5622.JPG" alt="Slide 17">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5623.JPG" alt="Slide 18">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5624.JPG" alt="Slide 19">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5625.JPG" alt="Slide 20">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5626.JPG" alt="Slide 21">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5627.JPG" alt="Slide 22">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5628.JPG" alt="Slide 23">
+    </div>
+    <div class="slide">
+      <img src="Images/IMG_5629.JPG" alt="Slide 24">
+    </div>
+    <div class="slide">
+        <img src="Images/AUDIR8.jpg" alt="Slide 25">
+      </div>
+      <div class="slide">
+        <img src="Images/IMG_0377.PNG" alt="Slide 26">
+      </div>
+      <div class="slide">
+        <img src="Images/IMG_1405.jpg" alt="Slide 27">
+      </div>
+      <div class="slide">
+        <img src="Images/IMG_1482.JPG" alt="Slide 28">
+      </div>
+      <div class="slide">
+        <img src="Images/IMG_4838.jpg" alt="Slide 29">
+      </div>
+      <div class="slide">
+        <img src="Images/IMG_5630.jpg" alt="Slide 30">
+      </div>
+  </div>
+
+  <br>
+
+
+    </main>
+
+    <div>
+        <a href="Book Test Drive.html" class="button-link previous">
+            <img src="images/back.png" alt="Previous" class="button-image"/>
+        </a>
+        
+        <a href="Home.html" class="button-link next">
+            <img src="images/next.png" alt="Next" class="button-image"/>
+        </a>
+        </div>
+        
+          <footer>
+                <nav>
+                    <ul>
+                        <li><a href="Contact Us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </footer>
+            <script>
+              let slideIndex = 0;
+              let slideshowRunning = true; 
+            
+              function showSlides() {
+                const slides = document.getElementsByClassName("slide");
+            
+                for (let i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+                }
+            
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                  slideIndex = 1;
+                }
+            
+                slides[slideIndex - 1].style.display = "block";
+            
+                if (slideshowRunning) {
+                  setTimeout(showSlides, 10000);
+                }
+              }
+            
+              function toggleSlideshow() {
+                slideshowRunning = !slideshowRunning;
+                if (slideshowRunning) {
+                  showSlides();
+                }
+              }
+            
+              document.addEventListener("DOMContentLoaded", function() {
+                showSlides();
+            
+                const images = document.getElementsByClassName("slide");
+                for (let i = 0; i < images.length; i++) {
+                  images[i].addEventListener("click", function() {
+                    toggleSlideshow();
+                    setTimeout(toggleSlideshow, 10000);
+                  });
+                }
+              });
+            </script>
+            
+            
+<body>
+</html>

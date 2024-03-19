@@ -1,0 +1,538 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarChoicePro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/script.js"></script>
+    <link rel="manifest" href="Data/manifest.json">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .search-input-container button {
+            background-color: grey;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    
+        #addToFavorites,
+        #removeFromFavorites,
+        .add-to-favorites,
+        .remove-from-favorites,
+        .previous,
+        .next {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid #000;
+        }
+    
+        .add-to-favorites {
+            background-color: #0074D9;
+            color: #FFFFFF;
+        }
+    
+        .remove-from-favorites {
+            background-color: #FF4136;
+            color: #FFFFFF;
+        }
+    
+        .previous,
+        .next {
+            background-color: #88b04b;
+            color: #fff;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    
+        .next {
+            background-color: #FFD580;
+        }
+    
+        #search-input {
+            border: 2px solid black;
+            background-color: #F5F5DC;
+            width: 400px;
+        }
+    
+        .add-to-favorites,
+        .remove-from-favorites {
+            border-radius: 5px;
+        }
+    
+        h2 {
+            border: 2px solid #000;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 260px;
+        }
+    
+        nav ul li:nth-child(2) a {
+            color: #FFD580;
+        }
+    
+        nav ul li:nth-child(3) a {
+            color: #fffacd;
+        }
+    
+        nav ul li:nth-child(4) a {
+            color: #C4A484;
+        }
+    
+        nav ul li:nth-child(5) a {
+            color: #b0c4de;
+        }
+    
+        nav ul li:nth-child(6) a {
+            color: #00CED1;
+        }
+    
+        footer nav ul li:nth-child(1) a {
+            color: #CBC3E3;
+        }
+    
+        .app-logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 40px; 
+  margin-right: 20px; 
+  margin-bottom: 10px;
+}
+    
+        .app-logo a img {
+            max-width: 100%;
+            height: 100px;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        p.slogan {
+            margin: 10px 0;
+            font-style: italic; 
+        }
+
+        @media screen and (max-width: 768px) {
+            main {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+            body {
+                font-size: 16px;
+            }
+    
+            .app-logo,
+            header,
+            .featured-car,
+            .search-button {
+                text-align: center;
+            }
+    
+            nav ul {
+                text-align: center;
+                padding: 0;
+            }
+    
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+    
+            .search-bar {
+                text-align: center;
+                margin: 10px auto;
+                max-width: 80%;
+            }
+        }
+    
+    
+    </style>
+    
+    
+    
+</head>
+<body>
+
+    <div>
+<div id="page-preloader">
+    <div id="preloader"></div>
+</div>
+
+   <div>
+<div id="preloader-container">
+    <a href="Home.html" id="return-home">
+        <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+    </a>
+</div>
+
+<header>
+
+    <div>
+        <div class="app-logo">
+            <a href="Home.html">
+                <img src="Images/CarChoicePro.png" alt="CarChoicePro Logo" style="border: 2px solid #F5F5F5; padding: 0px;">
+            </a>
+        </div>
+    
+        
+        <nav>
+            <ul>
+                <h1 class="text-info">CarChoice Pro</h1>
+                <p class="slogan">Elevate Your Drive, Choose Your Thrive</p>
+
+                <br>
+
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Price Lookup Screen.html">Price Lookup</a></li>
+                <li><a href="Car Search Screen.html" style="color: 	#F4E6D4;">Car Search</a></li>
+                <li><a href="Car Details Screen.html" style="color: #FFB6C1;">Car Details</a></li>
+                <li><a href="Location Based Screen.html" style="color: #FF80FF;">Location Based</a></li>
+                <li><a href="Book Test Drive.html" style="color: #FFD700;">Book Test Drive</a></li>
+                <li><a href="CarsShowcase.html" style="color: #008080;">Cars ShowCase</a></li>
+              </ul>
+        </nav>
+    </header>
+</body>
+</html>
+
+    <main>
+
+        <div>
+            <section id="videos" class="video-section">
+              <h1 style="border: 2px solid #000; width: 450px; padding: 10px; border-radius: 8px;" class="text-warning">Useful Car Buying Videos</h1>
+            <br>
+            </section>
+          </div>
+          
+    <br>
+
+    <section id="search" class="search-section">
+        <div class="search-heading">
+            <h2 style="border: 2px solid #000; width: 250px; padding: 10px; border-radius: 8px;" class="text-info">Find Your Perfect Car</h2>
+            <div class="search-bar">
+                <form id="carSearchForm">
+                    <div class="search-input-container">
+                        <input type="text" id="search-input" name="query" placeholder="Search For Cars:" required>
+                        <button type="submit" style="background-color: #fffacd; border: 2px solid black;">
+                            <img src="Images/search icon.jpg" alt="Search" style="width: 30px; height: 30px;">
+                        </button>
+                        <button id="clear-button" style="background-color: #ff80ff; border: 2px solid black;">
+                            <img src="Images/clear search icon.jpg" alt="Clear Search" style="width: 30px; height: 30px;">
+                        </button>
+                    </div>
+                    <div id="search-results"></div>
+                </form>
+        </div>
+    </section>
+    
+    
+        <br>
+        <br>
+
+        <div>
+            <div id="filter-container">
+            <div>
+                <label for="make">Select An Make:</label>
+                <select id="make">
+                    <option value="Select An Make">Select An Make</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="model">Select An Model:</label>
+                <select id="model">
+                    <option value="Select An Model">Select An Model</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="year-filter">Select An Year:</label>
+                <select id="year-filter">
+                    <option value="Select An Year">Select An Year</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="city-select">Select An City:</label>
+                <select id="city-select">
+                    <option value="Select A City">Select A City</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="transmission-type">Select An Transmission Type:</label>
+                <select id="transmission-type">
+                    <option value="Select A Transmission Type">Select A Transmission Type</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="fuel-type">Select An Fuel Type:</label>
+                <select id="fuel-type">
+                    <option value="Select A Fuel Type">Select A Fuel Type</option>
+                </select>
+            </div>
+            
+        <br>
+
+        <div>
+            <button class="add-to-favorites">Add to Favorites</button> 
+            <button class="remove-from-favorites">Remove from Favorites</button>
+        </div>
+
+        <div>
+            <div id="messageDisplay"></div>
+        </div>
+
+    
+    </main>
+
+    <div>
+      <a href="Price Lookup Screen.html" class="button-link previous">
+        <img src="images/back.png" alt="Previous" class="button-image" />
+    </a>
+    
+    <a href="Car Details Screen.html" class="button-link next">
+        <img src="images/next.png" alt="Next" class="button-image" />
+    </a>
+    </div>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const carSearchForm = document.getElementById("carSearchForm");
+    const searchInput = document.getElementById("search-input");
+    const clearButton = document.getElementById("clear-button");
+    const featuredCarList = document.getElementById("featuredCarList");
+    const preloader = document.getElementById("page-preloader");
+    const searchResultsContainer = document.getElementById("search-results");
+    const filterContainer = document.getElementById("filter-container");
+
+    const originalFilters = {};
+    let filtersDisplay;
+
+    saveOriginalFilters();
+
+    carSearchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const query = searchInput.value;
+        const filters = getFilterValues();
+        displaySearchResults(query, filters);
+    });
+
+    clearButton.addEventListener("click", function () {
+        resetFilters();
+        clearSearchResults();
+        clearDisplayedFilters();
+        document.getElementById('messageDisplay').innerText = '';
+    });
+
+    window.addEventListener("load", function () {
+        preloader.style.opacity = "0";
+        setTimeout(function () {
+            preloader.style.display = "none";
+        }, 300);
+    });
+
+    function displaySearchResults(query, filters) {
+        fetch('Data/cars.json')
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.createElement("div");
+                resultElement.textContent = `Search results for: ${query}`;
+                searchResultsContainer.innerHTML = "";
+                searchResultsContainer.appendChild(resultElement);
+
+                filtersDisplay = document.createElement("div");
+                filtersDisplay.textContent = `Selected Filters: ${JSON.stringify(filters)}`;
+                filterContainer.appendChild(filtersDisplay);
+
+                const matchingCars = searchCars(data.cars, query, filters);
+
+                matchingCars.forEach(car => {
+                    const carElement = document.createElement("div");
+                    carElement.innerHTML = `<strong>${car.brand}</strong><br>
+                                           Model: ${car.model || 'N/A'}<br>
+                                           Fuel Type: ${car.fuelType}<br>
+                                           Engine Type: ${car.engineType}<br>
+                                           Mileage: ${car.mileage}<br>
+                                           <a href="${car.link}" target="_blank">Learn More</a>`;
+                    searchResultsContainer.appendChild(carElement);
+                });
+            })
+            .catch(error => console.error('Error fetching JSON file:', error));
+    }
+
+    function searchCars(cars, query, filters) {
+        return cars.filter(car => {
+            const brandMatch = car.brand.toLowerCase().includes(query.toLowerCase());
+            const modelMatch = car.model ? car.model.toLowerCase().includes(query.toLowerCase()) : false;
+            const filtersMatch = Object.keys(filters).every(key => filters[key] === car[key]);
+            return brandMatch || modelMatch || filtersMatch;
+        });
+    }
+
+    function clearSearchResults() {
+        searchResultsContainer.innerHTML = "";
+    }
+
+    clearButton.addEventListener("click", function () {
+        searchInput.value = "";
+    });
+
+    function clearDisplayedFilters() {
+        if (filtersDisplay) {
+            filtersDisplay.remove();
+        }
+    }
+
+    function saveOriginalFilters() {
+        originalFilters.make = document.getElementById('make').value;
+        originalFilters.model = document.getElementById('model').value;
+        originalFilters.year = document.getElementById('year-filter').value;
+        originalFilters.city = document.getElementById('city-select').value;
+        originalFilters.transmission = document.getElementById('transmission-type').value;
+        originalFilters.fuel = document.getElementById('fuel-type').value;
+    }
+
+    function getFilterValues() {
+        return {
+            make: document.getElementById('make').value,
+            model: document.getElementById('model').value,
+            year: document.getElementById('year-filter').value,
+            city: document.getElementById('city-select').value,
+            transmission: document.getElementById('transmission-type').value,
+            fuel: document.getElementById('fuel-type').value,
+        };
+    }
+
+    function resetFilters() {
+        document.getElementById('make').value = originalFilters.make;
+        document.getElementById('model').value = originalFilters.model;
+        document.getElementById('year-filter').value = originalFilters.year;
+        document.getElementById('city-select').value = originalFilters.city;
+        document.getElementById('transmission-type').value = originalFilters.transmission;
+        document.getElementById('fuel-type').value = originalFilters.fuel;
+    }
+
+    document.querySelectorAll('.add-to-favorites, .remove-from-favorites').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var action = button.classList.contains('add-to-favorites') ? 'added' : 'removed';
+            var message = `The searched car has been ${action} to favourites`;
+
+            if (action === 'removed') {
+                message = `The searched car has been ${action} from favourites`;
+            }
+
+            document.getElementById('messageDisplay').innerText = message;
+        });
+    });
+
+    fetch('Data/Filters.json')
+        .then(response => response.json())
+        .then(data => {
+            const makeDropdown = document.getElementById('make');
+            data.makes.forEach(make => {
+                const option = document.createElement('option');
+                option.value = make;
+                option.textContent = make;
+                makeDropdown.appendChild(option);
+            });
+
+            const modelDropdown = document.getElementById('model');
+            data.models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                modelDropdown.appendChild(option);
+            });
+
+            const yearDropdown = document.getElementById('year-filter');
+            data.years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearDropdown.appendChild(option);
+            });
+
+            const cityDropdown = document.getElementById('city-select');
+            data.cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                cityDropdown.appendChild(option);
+            });
+
+            const transmissionDropdown = document.getElementById('transmission-type');
+            data.transmissionTypes.forEach(transmission => {
+                const option = document.createElement('option');
+                option.value = transmission;
+                option.textContent = transmission;
+                transmissionDropdown.appendChild(option);
+            });
+
+            const fuelDropdown = document.getElementById('fuel-type');
+            data.fuelTypes.forEach(fuel => {
+                const option = document.createElement('option');
+                option.value = fuel;
+                option.textContent = fuel;
+                fuelDropdown.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading data:', error));
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('Data/videoData.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            var videoListContainer = document.getElementById("videos");
+
+            jsonData.videos.forEach(video => {
+                var link = document.createElement("a");
+                link.href = video.url;
+                link.textContent = video.title;
+                link.target = "_blank"; 
+
+                var paragraph = document.createElement("p");
+                paragraph.appendChild(link);
+
+                videoListContainer.appendChild(paragraph);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching JSON:', error);
+        });
+});
+
+
+    </script>
+
+</body>
+</html>
